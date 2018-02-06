@@ -6,9 +6,11 @@ from wallaby import *
 
 
 def main():
-    print ("Turn create on!!!!")
     act.init()
-    act.driveBotGuy()
+    print ("Turn create on!!!!")
+    act.getOutOfSB()
+    act.goToCenter()
+    #act.driveBotGuy()
 
     create_disconnect()
 if __name__ == "__main__":

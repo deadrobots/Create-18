@@ -107,3 +107,23 @@ def drive_accel(speed, time):
         msleep(100)
     msleep(time)
 create_drive_direct(0, 0)
+
+def timedLineFollow(time):
+    sec = seconds()
+    while(seconds() - sec<time):
+        if get_create_lfcliff_amt() < 2000:
+            create_drive_direct(200, 150)
+        else:
+            create_drive_direct(150, 200)
+
+def lineFollowTilCrossBlack():
+    while(get_create_lcliff_amt() > 2000):
+        if get_create_lfcliff_amt() < 2000:
+            create_drive_direct(200, 150)
+        else:
+            create_drive_direct(150, 200)
+    while (get_create_lcliff_amt() < 2000):
+        if get_create_lfcliff_amt() < 2000:
+            create_drive_direct(200, 150)
+        else:
+            create_drive_direct(150, 200)

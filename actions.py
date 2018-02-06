@@ -22,6 +22,7 @@ def driveBotGuy():
     print ("driveBotGuy")
     drive_timed(250, 250, 600)
     drive_timed(-250, 250, 420)
+    wait_for_button(False)
     drive_timed(0, 0, 500)
     drive_timed(250, 250, 2700)
     wait_for_button(False)
@@ -36,3 +37,23 @@ def driveBotGuy():
     wait_for_button(False)
     #Drives forward to grab BotGuy
     drive_timed(98, 100, 2700)
+
+def getOutOfSB():
+    print "Push left button to end"
+    while get_create_lcliff_amt() > 2000:
+        create_drive_direct(250, 250)
+        msleep(50)
+    drive_timed(-250, 250, 430)
+    create_stop()
+    drive_timed(-250, -250, 1000)
+
+def goToCenter():
+    lineFollowTilCrossBlack()
+    timedLineFollow(.75)
+    drive_timed(-150, -250, 2000)
+    wait_for_button(False)
+    while get_create_lcliff_amt() > 2000:
+        create_drive_direct(250, 150)
+    create_stop
+    drive_timed(-250, -150, 1500)
+    drive_timed(-200, -200, 500)
