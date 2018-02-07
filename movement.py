@@ -1,5 +1,6 @@
 from wallaby import *
 from math import pi
+from utils import *
 
 
 def drive_timed(left, right, time):
@@ -115,6 +116,7 @@ def timedLineFollow(time):
             create_drive_direct(200, 150)
         else:
             create_drive_direct(150, 200)
+    create_stop()
 
 def lineFollowTilCrossBlack():
     while(get_create_lcliff_amt() > 2000):
@@ -127,3 +129,19 @@ def lineFollowTilCrossBlack():
             create_drive_direct(200, 150)
         else:
             create_drive_direct(150, 200)
+    create_stop()
+
+def driveTilBlack(speed):
+    create_drive_direct(speed, speed)
+    while (get_create_lcliff_amt() > 2000):
+        pass
+    create_stop()
+
+def driveAcrossBlack(speed):
+    create_drive_direct(speed, speed)
+    while (get_create_lcliff_amt() > 2000):
+        pass
+    while (get_create_lcliff_amt() < 2000):
+        pass
+    msleep(100)
+    create_stop()
