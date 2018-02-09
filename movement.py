@@ -107,7 +107,7 @@ def drive_accel(speed, time):
         create_drive_direct(-sub_speed, -sub_speed)
         msleep(100)
     msleep(time)
-create_drive_direct(0, 0)
+    create_drive_direct(0, 0)
 
 def timedLineFollow(time):
     sec = seconds()
@@ -145,3 +145,11 @@ def driveAcrossBlack(speed):
         pass
     msleep(100)
     create_stop()
+
+
+def driveUntilBlue(speed):
+    create_drive_direct(speed, speed)
+    while (get_create_rfcliff_amt() > 2000):
+        pass
+    create_stop()
+

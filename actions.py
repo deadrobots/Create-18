@@ -16,11 +16,9 @@ def init():
     print("Create connected...")
     create_full()
 
-
 def driveBotGuy():
     #Drives to center of board (avoiding pom piles) to point arm at BotGuy
     print ("driveBotGuy")
-
     drive_timed(250, 250, 600)
     drive_timed(-250, 250, 420)
     wait_for_button(False)
@@ -34,7 +32,7 @@ def driveBotGuy():
     wait_for_button(False)
     drive_timed(-150, -150, 2100)
     wait_for_button(False)
-    drive_timed(-250, -60, 2300)
+    drive_timed(-270, -80, 2300)  #-250, -60, 2300
     wait_for_button(False)
     #Drives forward to grab BotGuy
     drive_timed(98, 100, 2700)
@@ -64,9 +62,11 @@ def goToCenter():
     drive_timed(-120, -120, 2200)
     drive_timed(0, -165, 1870)
     drive_timed(135, 135, 500)
-    drive_timed(130, 160, 500)
-    drive_timed(100, 100, 800)
+    drive_timed(100, 100, 600) #130, 160
     set_servo_position(c.servoArm, c.armup)
+    drive_timed(150, 250, 850) #100, 100
+    DEBUG()
+    #set_servo_position(c.servoArm, c.armup)
     drive_timed(-150, -150, 750)
     drive_timed(-155, 0, 750)
     drive_timed(100, 100, 1500)
