@@ -131,11 +131,24 @@ def lineFollowTilCrossBlack():
             create_drive_direct(150, 200)
     create_stop()
 
-def driveTilBlack(speed):
+def driveTilBlackLCliff(speed):
     create_drive_direct(speed, speed)
     while (get_create_lcliff_amt() > 2000):
         pass
     create_stop()
+
+def driveTilBlackRCliff(speed):
+    create_drive_direct(speed, speed)
+    while (get_create_rcliff_amt() > 2000):
+        pass
+    create_stop()
+
+def turnTilBlackLCliff(left, right):
+    create_drive_direct(left, right)
+    while (get_create_lcliff_amt() > 2000):
+        pass
+    create_stop()
+
 
 def driveAcrossBlack(speed):
     create_drive_direct(speed, speed)
@@ -146,6 +159,14 @@ def driveAcrossBlack(speed):
     msleep(100)
     create_stop()
 
+def turnAcrossBlack(left, right):
+    create_drive_direct(left, right)
+    while (get_create_lfcliff_amt() > 2000):
+        pass
+    while (get_create_lfcliff_amt() < 2000):
+        pass
+    msleep(100)
+    create_stop()
 
 def driveUntilBlue(speed):
     create_drive_direct(speed, speed)
