@@ -22,5 +22,5 @@ armOut = 1450
 armup = 950
 armStartbox = 2017
 
-clawOpen = 2047
-clawClosed = 1000
+clawOpen = 1383
+clawClosed = 0
