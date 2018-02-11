@@ -16,17 +16,36 @@ def init():
         exit(0)
     print("Create connected...")
     create_full()
+    '''motor(c.cogMotor, -50)
+    msleep(1400)
+    motor(c.cogMotor, 0)
+    msleep(1000)'''
 
 def getOutOfSB():
     #Gets Create out of start box and ready to line follow
     print "Push left button to end"
     enable_servos()
-    moveServo(c.servoArm, c.armup, 20)
+    set_servo_position(c.servoCog, c.cogStart)
+    motor(c.cogMotor, 50)
+    msleep(2500)
+    motor(c.cogMotor, 0)
+    #moveServo(c.servoArm, c.armup, 20)
     driveTilBlackRCliff(-250)
     turnTilBlackLCliff(150, 0)
-
-    drive_timed(0, -150, 750)
+    drive_timed(0, -150, 370)
+    msleep(500)
+    '''motor(c.cogMotor, -50)
+    msleep(1050)
+    motor(c.cogMotor, 0)'''
     #drive_timed(-250, -250, 1000)
+
+def raiseCog():
+    moveServo(c.servoCog, 1300, 10)
+    DEBUG()
+    motor(c.cogMotor, 50)
+    msleep(500)
+    timedLineFollow(1)
+
 
 def goToCenter():
     #Create line follows to middle then goes to right of center area to reach Botguy
@@ -87,4 +106,3 @@ def goToCenter():
     drive_timed(-250, -150, 1500)
     drive_timed(-200, -200, 500)"""
 
-def grabBotguy

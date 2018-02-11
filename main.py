@@ -10,6 +10,8 @@ def main():
     act.init()
     print ("Turn create on!!!!")
     act.getOutOfSB()
+    act.raiseCog()
+    u.DEBUG()
     act.goToCenter()
     #act.driveBotGuy()
 
