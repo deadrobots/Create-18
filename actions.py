@@ -39,11 +39,13 @@ def goToCenter():
     #msleep(3000)
     #drive_timed(0, -600, 300)
     drive_timed(150, -250, 900)
-    set_servo_position(c.servoArm, 819)
-    drive_timed(-75,-75,500)
+    #set_servo_position(c.servoArm, 819)
     set_servo_position(c.servoClaw, c.clawOpen)
+    drive_timed(-75,-75,500)
     msleep(600)
     drive_timed(150, -250, 1500)
+    set_servo_position(c.servoArm, c.armUpbot)
+    DEBUG()
     drive_timed(75,75,4000)
     drive_timed(75, -175, 400)
     drive_timed(-75, -75, 500)
@@ -63,7 +65,6 @@ def goToCenter():
     drive_timed(-150, 0, 2300)
     drive_timed(150, 150, 1500)
     drive_timed(100, 0, 1000)
-    DEBUG()
     '''
     set_servo_position(c.servoArm, c.armup)
     drive_timed(0, -165, 1870)
@@ -87,4 +88,10 @@ def goToCenter():
     drive_timed(-250, -150, 1500)
     drive_timed(-200, -200, 500)"""
 
-def grabBotguy
+def grabBotguy():
+    drive_timed(-150, -150, 1000)
+    moveServo(c.servoArm, c.armOut, 15)
+    msleep(1000)
+    drive_timed(150, 150, 1000)
+    wait_for_button(False)
+    moveServo(c.servoClaw, c.clawClosed, 20)

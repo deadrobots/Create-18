@@ -11,7 +11,8 @@ def main():
     print ("Turn create on!!!!")
     act.getOutOfSB()
     act.goToCenter()
-    #act.driveBotGuy()
+    act.grabBotguy()
+
 
     create_disconnect()
 if __name__ == "__main__":

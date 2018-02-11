@@ -14,14 +14,17 @@ LOGFILE = "" # Leave empty
 ROBOT_NAME = "Create-17"
 
 #Servo Ports
-servoArm = 0
+servoArm = 2
 servoClaw = 3
 
 #Servo Values
-armOut = 1450
-armup = 950
+armOut = 1180
+armup = 1600
 armStartbox = 2017
-armHigh = 600
+armHigh = 744
 
-clawOpen = 1383
-clawClosed = 0
+clawOpen = 1065
+clawClosed = 290
+
+
+armUpbot = 1973
