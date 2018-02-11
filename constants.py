@@ -21,6 +21,7 @@ servoClaw = 3
 armOut = 1450
 armup = 950
 armStartbox = 2017
+armHigh = 600
 
 clawOpen = 1383
 clawClosed = 0
