@@ -41,10 +41,21 @@ def getOutOfSB():
 
 def raiseCog():
     moveServo(c.servoCog, 1300, 10)
-    DEBUG()
     motor(c.cogMotor, 50)
     msleep(500)
-    timedLineFollow(1)
+    #timedLineFollow(1)
+
+def startDriving():
+    drive_timed(100, 100, 1000)
+    moveServo(c.servoCog, 1100, 10)
+    rotate_degrees(-20, 100)
+    drive_timed(-100, -100, 1000)
+    driveAndLift(750)
+    msleep(1000)
+    lineFollowAndLift()
+    DEBUG()
+
+
 
 
 def goToCenter():

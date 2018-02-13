@@ -4,15 +4,20 @@ import actions as act
 import constants as c
 from wallaby import *
 import utils as u
+from movement import *
 
 
 def main():
+    print ("Running")
     act.init()
-    print ("Turn create on!!!!")
+    lineFollowAndLift(5)
+    DEBUG()
+
     act.getOutOfSB()
     act.raiseCog()
-    u.DEBUG()
-    act.goToCenter()
+    act.startDriving()
+
+    #act.goToCenter()
     #act.driveBotGuy()
 
     create_disconnect()

@@ -1,6 +1,7 @@
 from wallaby import *
 from math import pi
 from utils import *
+import constants as c
 
 
 def drive_timed(left, right, time):
@@ -173,4 +174,38 @@ def driveUntilBlue(speed):
     while (get_create_rfcliff_amt() > 2000):
         pass
     create_stop()
+
+
+def timedLineFollowLeft(time):
+    sec = seconds()
+    while(seconds() - sec<time):
+        if get_create_lcliff_amt() < 2000:
+            create_drive_direct(150, 100)
+        else:
+            create_drive_direct(100, 150)
+    create_stop()
+
+
+def lineFollowAndLift(time):
+    sec = seconds()
+    while (seconds() - sec < time):
+        i = 0
+        if i < 1:
+            timedLineFollowLeft(.1)
+            i += 1
+        else:
+            moveCog(50, 100)
+            i += 1
+
+
+def driveAndLift(time):
+    drive_timed(-100, -100, time)
+    moveCog(50, time)
+    stop()
+
+
+def moveCog(speed, time):
+    motor(c.cogMotor, speed)
+    msleep(time)
+    motor(c.cogMotor, 0)
 
