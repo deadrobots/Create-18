@@ -28,5 +28,5 @@ armHigh = 600
 clawOpen = 1383
 clawClosed = 0
 
-cogStart = 1850
+cogStart = 1700
 cogPegTwo = 1400

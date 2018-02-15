@@ -4,14 +4,16 @@ import actions as act
 import constants as c
 from wallaby import *
 import utils as u
-from movement import *
+import movement as m
 
 
 def main():
     print ("Running")
     act.init()
-    lineFollowAndLift(5)
-    DEBUG()
+    act.turnToRing()
+    act.liftRing()
+    act.makeTurn()
+    u.DEBUG()
 
     act.getOutOfSB()
     act.raiseCog()

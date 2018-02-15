@@ -16,10 +16,32 @@ def init():
         exit(0)
     print("Create connected...")
     create_full()
+    enable_servos()
+    set_servo_position(c.servoCog, c.cogStart)
     '''motor(c.cogMotor, -50)
     msleep(1400)
     motor(c.cogMotor, 0)
     msleep(1000)'''
+
+
+def turnToRing():
+    drive_timed(200, 200, 750)
+    drive_timed(200, -200, 700)
+    moveCog(95, 1175)
+    drive_timed(-60, -200, 1700)
+
+def liftRing():
+    moveServo(c.servoCog, c.cogStart-450, 5)
+    moveCog(100, 2000)
+    moveServo(c.servoCog, c.cogStart - 750, 5)
+
+def makeTurn():
+    motor(c.cogMotor, 100)
+    drive_timed(-50, -75, 2000)
+    motor(c.cogMotor, 0)
+    drive_timed(-75, -50, 2000)
+    moveCog(100, 1000)
+    moveServo(c.servoCog, c.cogStart - 850, 5)
 
 def getOutOfSB():
     #Gets Create out of start box and ready to line follow
@@ -116,4 +138,5 @@ def goToCenter():
     create_stop
     drive_timed(-250, -150, 1500)
     drive_timed(-200, -200, 500)"""
+
 
