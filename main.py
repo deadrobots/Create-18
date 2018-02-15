@@ -10,8 +10,8 @@ def main():
     act.init()
     print ("Turn create on!!!!")
     act.getOutOfSB()
-    act.goToCenter()
-    act.grabBotguy()
+    act.driveToCenter()
+    act.getBotguy()
 
 
     create_disconnect()

@@ -22,76 +22,39 @@ def getOutOfSB():
     print "Push left button to end"
     enable_servos()
     moveServo(c.servoArm, c.armup, 20)
-    driveTilBlackRCliff(-250)
-    turnTilBlackLCliff(150, 0)
+    moveServo(c.servoClaw, c.clawMiddle, 10)
+    drive_timed(80,80, 2000)
+    rotate_degrees(55, 70)
+    #drive_timed(100, 100, 1000)
+    rotate_degrees(-150,50)
+    timedLineFollow(3.3)
 
-    drive_timed(0, -150, 750)
-    #drive_timed(-250, -250, 1000)
 
-def goToCenter():
-    #Create line follows to middle then goes to right of center area to reach Botguy
-    lineFollowTilCrossBlack()
-    timedLineFollow(.85)
-    set_servo_position(c.servoClaw, c.clawClosed)
-    #drive_timed(150, -250, 1000)
-    #msleep(2000)
-    #drive_timed(0, 600, 300)
-    #msleep(3000)
-    #drive_timed(0, -600, 300)
-    drive_timed(150, -250, 900)
-    #set_servo_position(c.servoArm, 819)
-    set_servo_position(c.servoClaw, c.clawOpen)
-    drive_timed(-75,-75,500)
-    msleep(600)
-    drive_timed(150, -250, 1500)
-    set_servo_position(c.servoArm, c.armUpbot)
-    DEBUG()
-    drive_timed(75,75,4000)
-    drive_timed(75, -175, 400)
-    drive_timed(-75, -75, 500)
-    drive_timed(75,75,2500)
-    set_servo_position(c.servoClaw, c.clawClosed)
+def driveToCenter():
+    rotate_degrees(80,70)
+    driveTilBlackRCliff(-150)
+    turnTilBlackLCliff(-100, 0)
+    drive_timed(150,150, 5000)
+    drive_timed(-100, -100, 1500)
+    rotate_degrees(53, 70)
+    drive_timed(-100,-100,500)
+    moveServo(c.servoArm, c.armLow, 10)
+
+def getBotguy():
+    drive_timed(100,100,1000)
+    moveServo(c.servoClaw, c.clawOpen, 10)
+    moveServo(c.servoArm, c.armBotguy, 10)
+    drive_timed(100,100, 1500)
+    moveServo(c.servoClaw, c.clawClosed, 10)
+    msleep(2000)
+    moveServo(c.servoArm, c.armOut, 10)
     msleep(500)
-    set_servo_position(c.servoClaw, c.clawOpen)
-    driveTilBlackRCliff(150)
-    turnTilBlackLCliff(100, 0)
-    drive_timed(-130, -130, 800)
-    set_servo_position(c.servoArm, c.armHigh)
-    msleep(500)
-    drive_timed(150, -250, 500)
-    drive_timed(150, 150, 4000)
-    drive_timed(-130, 130, 500)
-    drive_timed(90, 90, 3500)
-    drive_timed(-150, 0, 2300)
-    drive_timed(150, 150, 1500)
-    drive_timed(100, 0, 1000)
-    '''
-    set_servo_position(c.servoArm, c.armup)
-    drive_timed(0, -165, 1870)
-    set_servo_position(c.servoArm, c.armOut)
-    drive_timed(135, 135, 500)
-    drive_timed(90, 90, 700) #130, 160
-    set_servo_position(c.servoClaw, 1611)
-    drive_timed(-100,-100, 1000)
-    drive_timed(150, 250, 850) #100, 100
-    #set_servo_position(c.servoArm, c.armup)
-    drive_timed(-150, -150, 750)
-    drive_timed(-155, 0, 750)
-    drive_timed(100, 100, 1500)'''
+    drive_timed(-100, -100, 2000)
+    moveServo(c.servoArm, c.armup, 10)
+    msleep(2000)
 
-   # drive_timed(-150, -250, 2000)
 
-    """wait_for_button(False)
-    while get_create_lcliff_amt() > 2000:
-        create_drive_direct(250, 150)
-    create_stop
-    drive_timed(-250, -150, 1500)
-    drive_timed(-200, -200, 500)"""
 
-def grabBotguy():
-    drive_timed(-150, -150, 1000)
-    moveServo(c.servoArm, c.armOut, 15)
-    msleep(1000)
-    drive_timed(150, 150, 1000)
-    wait_for_button(False)
-    moveServo(c.servoClaw, c.clawClosed, 20)
+
+
+
