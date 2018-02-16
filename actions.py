@@ -38,20 +38,24 @@ def driveToCenter():
     drive_timed(-100, -100, 1500)
     rotate_degrees(53, 70)
     drive_timed(-100,-100,500)
-    moveServo(c.servoArm, c.armLow, 10)
+    moveServo(c.servoArm, 633, 10)
 
 def getBotguy():
     drive_timed(100,100,1000)
     moveServo(c.servoClaw, c.clawOpen, 10)
-    moveServo(c.servoArm, c.armBotguy, 10)
+    moveServo(c.servoArm, 355, 10)
     drive_timed(100,100, 1500)
     moveServo(c.servoClaw, c.clawClosed, 10)
-    msleep(2000)
-    moveServo(c.servoArm, c.armOut, 10)
+    msleep(1000)
+    drive_timed(-70,-70,1500)
+    moveServo(c.servoArm, 700, 10)
     msleep(500)
     drive_timed(-100, -100, 2000)
     moveServo(c.servoArm, c.armup, 10)
     msleep(2000)
+    moveServo(c.servoArm, 1420, 10)
+    drive_timed(100,100,2000)
+    DEBUG()
 
 
 
