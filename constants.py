@@ -6,7 +6,7 @@ ALLOW_BUTTON_WAIT = True
 START_TIME = 0
 
 #Motor Ports
-cogMotor = 0
+cogMotor = 3
 
 # Drive Info
 TURN_TIME = 0  # -20  # 0, 15, 40
@@ -15,9 +15,14 @@ TURN_TIME = 0  # -20  # 0, 15, 40
 LOGFILE = "" # Leave empty
 ROBOT_NAME = "Create-17"
 
-#Servo Ports
-servoCog = 0
-servoClaw = 3
+#Servo ports for blue Create
+#servoClaw = 3
+#servoCog = 1
+
+#Servo ports for red Create
+servoClaw = 1
+servoCog = 2
+servoIgus = 3
 
 #Servo Values
 armOut = 1450
@@ -28,5 +33,11 @@ armHigh = 600
 clawOpen = 1383
 clawClosed = 0
 
+#Position to move tram
+clawTram = 600
+#All the way back
+clawStart = 1900
+
 cogStart = 1700
 cogPegTwo = 1400
+cogGrab = 1780

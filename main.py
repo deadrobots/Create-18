@@ -6,13 +6,15 @@ from wallaby import *
 import utils as u
 import movement as m
 
-
 def main():
-    print ("Running")
+    print ("Running my code")
+    #Code moves ring to top rung and then pushes the tram to the middle (usually)
     act.init()
     act.turnToRing()
     act.liftRing()
     act.makeTurn()
+    act.dropRing()
+    act.slideTram()
     u.DEBUG()
 
     act.getOutOfSB()
