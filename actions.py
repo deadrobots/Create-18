@@ -135,36 +135,14 @@ def goToCenter():
     turnTilBlackLCliff(100, 0)
     drive_timed(-130, -130, 800)
     set_servo_position(c.servoArm, c.armHigh)
+
     msleep(500)
-    drive_timed(150, -250, 500)
-    drive_timed(150, 150, 4000)
-    drive_timed(-130, 130, 500)
-    drive_timed(90, 90, 3500)
-    drive_timed(-150, 0, 2300)
-    drive_timed(150, 150, 1500)
-    drive_timed(100, 0, 1000)
+    drive_timed(-100, -100, 2000)
+    moveServo(c.servoArm, c.armup, 10)
+    msleep(2000)
+    moveServo(c.servoArm, 1420, 10)
+    drive_timed(100,100,2000)
     DEBUG()
-    '''
-    set_servo_position(c.servoArm, c.armup)
-    drive_timed(0, -165, 1870)
-    set_servo_position(c.servoArm, c.armOut)
-    drive_timed(135, 135, 500)
-    drive_timed(90, 90, 700) #130, 160
-    set_servo_position(c.servoClaw, 1611)
-    drive_timed(-100,-100, 1000)
-    drive_timed(150, 250, 850) #100, 100
-    #set_servo_position(c.servoArm, c.armup)
-    drive_timed(-150, -150, 750)
-    drive_timed(-155, 0, 750)
-    drive_timed(100, 100, 1500)'''
 
-   # drive_timed(-150, -250, 2000)
-
-    """wait_for_button(False)
-    while get_create_lcliff_amt() > 2000:
-        create_drive_direct(250, 150)
-    create_stop
-    drive_timed(-250, -150, 1500)
-    drive_timed(-200, -200, 500)"""
 
 

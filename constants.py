@@ -15,6 +15,7 @@ TURN_TIME = 0  # -20  # 0, 15, 40
 LOGFILE = "" # Leave empty
 ROBOT_NAME = "Create-17"
 
+
 #Servo ports for blue Create
 #servoClaw = 3
 #servoCog = 1
@@ -24,14 +25,18 @@ servoClaw = 1
 servoCog = 2
 servoIgus = 3
 
-#Servo Values
-armOut = 1450
-armup = 950
-armStartbox = 2017
-armHigh = 600
 
-clawOpen = 1383
+#Servo Values
+armOut = 800
+armup = 1200
+armStartbox = 2017
+armHigh = 1500
+armLow = 650
+armBotguy = 570
+
+clawOpen = 1065
 clawClosed = 0
+
 
 #Position to move tram
 clawTram = 600
@@ -41,3 +46,4 @@ clawStart = 1900
 cogStart = 1700
 cogPegTwo = 1400
 cogGrab = 1780
+
