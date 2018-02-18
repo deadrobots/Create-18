@@ -17,17 +17,15 @@ def init():
     print("Create connected...")
     create_full()
     enable_servos()
-    set_servo_position(c.servoCog, c.cogStart)
-    set_servo_position(c.servoIgus, c.cogStart-500)
     set_servo_position(c.servoClaw, c.clawStart)
-    '''motor(c.cogMotor, -50)
-    msleep(1400)
-    motor(c.cogMotor, 0)
-    msleep(1000)'''
-
+    #set_servo_position(c.servoIgus, c.cogStartBox)
+    moveServo(c.servoArm, c.armStartbox,5)
+    resetChain()
+    wait_for_button()
 
 def turnToRing():
-    drive_timed(200, 200, 750)
+    set_servo_position(c.servoArm,c.cogStart)
+    drive_timed(200, 200, 900)#750
     drive_timed(200, -200, 700)
     moveCog(95, 1175)
     set_servo_position(c.servoIgus, c.cogGrab)
@@ -75,7 +73,7 @@ def getOutOfSB():
     #Gets Create out of start box and ready to line follow
     print "Push left button to end"
     enable_servos()
-    set_servo_position(c.servoCog, c.cogStart)
+    set_servo_position(c.servoArm, c.cogStart)
     motor(c.cogMotor, 50)
     msleep(2500)
     motor(c.cogMotor, 0)
@@ -90,14 +88,14 @@ def getOutOfSB():
     #drive_timed(-250, -250, 1000)
 
 def raiseCog():
-    moveServo(c.servoCog, 1300, 10)
+    moveServo(c.servoArm, 1300, 10)
     motor(c.cogMotor, 50)
     msleep(500)
     #timedLineFollow(1)
 
 def startDriving():
     drive_timed(100, 100, 1000)
-    moveServo(c.servoCog, 1100, 10)
+    moveServo(c.servoArm, 1100, 10)
     rotate_degrees(-20, 100)
     drive_timed(-100, -100, 1000)
     driveAndLift(750)

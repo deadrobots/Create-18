@@ -22,18 +22,17 @@ ROBOT_NAME = "Create-17"
 
 #Servo ports for red Create
 servoClaw = 1
-servoCog = 2
+servoArm = 2
 servoIgus = 3
 
 
 #Servo Values
 armOut = 800
 armup = 1200
-armStartbox = 2017
+armStartbox = 520#2017
 armHigh = 1500
 armLow = 650
 armBotguy = 570
-
 clawOpen = 1065
 clawClosed = 0
 
@@ -41,8 +40,9 @@ clawClosed = 0
 #Position to move tram
 clawTram = 600
 #All the way back
-clawStart = 1900
+clawStart = 1730
 
+cogStartBox=800
 cogStart = 1700
 cogPegTwo = 1400
 cogGrab = 1780

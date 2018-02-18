@@ -215,3 +215,21 @@ def moveCog(speed, time):
     msleep(time)
     motor(c.cogMotor, 0)
 
+def resetChain():
+    startTime = seconds()
+    previousCount= 0
+    clear_motor_position_counter(c.cogMotor)
+    print 'retracting'
+    motor(c.cogMotor, -35)
+    msleep(200)
+    while (seconds() - startTime < 5):
+        msleep(50)
+        currentCount=get_motor_position_counter(c.cogMotor)
+        print currentCount
+        if previousCount-currentCount>=20:
+            previousCount=currentCount
+        else:
+            freeze(c.cogMotor)
+            print'stopping'
+            break
+    freeze(c.cogMotor)
