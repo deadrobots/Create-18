@@ -4,14 +4,25 @@ import actions as act
 import constants as c
 from wallaby import *
 import utils as u
-
+import movement as m
 
 def main():
+    print ("Running my code")
+    #Code moves ring to top rung and then pushes the tram to the middle (usually)
     act.init()
-    print ("Turn create on!!!!")
+    act.turnToRing()
+    act.liftRing()
+    act.makeTurn()
+    act.dropRing()
+    act.slideTram()
+    u.DEBUG()
+
     act.getOutOfSB()
-    act.driveToCenter()
-    act.getBotguy()
+    act.raiseCog()
+    act.startDriving()
+
+    #act.goToCenter()
+    #act.driveBotGuy()
 
 
     create_disconnect()
