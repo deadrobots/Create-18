@@ -19,6 +19,7 @@ def DEBUG(PrintTime=True):
     create_disconnect()
     if PrintTime:
         print 'Program stop for DEBUG\nSeconds: ', seconds() - c.START_TIME
+    disable_servos()
     exit(0)
 
 

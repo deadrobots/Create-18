@@ -16,11 +16,17 @@ def init():
         exit(0)
     print("Create connected...")
     create_full()
+    if c.IS_CLONE:
+        print("I AM CLONE")
+    elif c.IS_PRIME:
+        print("I AM PRIME")
+    else:
+        print("I DON'T KNOW WHAT I AM")
     enable_servos()
     set_servo_position(c.servoClaw, c.clawStart)
-    #set_servo_position(c.servoIgus, c.cogStartBox)
+    set_servo_position(c.servoIgus, c.cogStartBox)
     moveServo(c.servoArm, c.armStartbox,5)
-    resetChain()
+    #resetChain()
     wait_for_button()
 
 def turnToRing():
