@@ -23,19 +23,21 @@ def init():
     else:
         print("I DON'T KNOW WHAT I AM")
     enable_servos()
+    set_servo_position(c.servoIgus, c.cogGrab)
     set_servo_position(c.servoClaw, c.clawStart)
+    resetChain()
     set_servo_position(c.servoIgus, c.cogStartBox)
+    msleep(2000)
     moveServo(c.servoArm, c.armStartbox,5)
-    #resetChain()
     wait_for_button()
 
 def turnToRing():
     set_servo_position(c.servoArm,c.cogStart)
-    drive_timed(200, 200, 900)#750
-    drive_timed(200, -200, 700)
-    moveCog(95, 1175)
+    drive_timed(200, 200, 1400)#900#750
+    drive_timed(200, -200, 600)
     set_servo_position(c.servoIgus, c.cogGrab)
-    drive_timed(-60, -200, 1700)
+    moveCog(95, 1600)#1175
+    drive_timed(-60, -200, 1700)#1700
 
 def liftRing():
     moveServo(c.servoIgus, c.cogStart - 450, 5)
@@ -46,6 +48,9 @@ def makeTurn():
     #Continues up with the ring, turning so it does not hit the blocks
     #Right now the robot is very close to the blocks (though not touching)
     #Improve this!!
+    turnAcrossBlack(50,-50)
+    DEBUG()
+    #add line follows
     motor(c.cogMotor, 100)
     drive_timed(-50, -75, 2000)
     motor(c.cogMotor, 0)

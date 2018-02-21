@@ -54,3 +54,6 @@ def moveServo(servo, endPos, speed):
         msleep(10)
     set_servo_position(servo, endPos)
 msleep(10)
+
+def igusReset():
+    return digital(c.IGUS_BUTTON)

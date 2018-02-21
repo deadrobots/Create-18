@@ -29,12 +29,15 @@ servoArm = 1
 servoClaw = 2
 servoIgus = 3
 
+# Digital ports
+IGUS_BUTTON=9
+
 if IS_PRIME:
 
     #Arm Servo Values
     armOut = 800
     armup = 1200
-    armStartbox = 520 #2017
+    armStartbox = 400#520 #2017
     armHigh = 1500
     armLow = 650
     armBotguy = 570

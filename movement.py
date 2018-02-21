@@ -172,7 +172,7 @@ def turnAcrossBlack(left, right):
         pass
     while (get_create_lfcliff_amt() < 2000):
         pass
-    msleep(100)
+    msleep(200)
     create_stop()
 
 def driveUntilBlue(speed):
@@ -217,11 +217,18 @@ def moveCog(speed, time):
 
 def resetChain():
     startTime = seconds()
-    previousCount= 0
-    clear_motor_position_counter(c.cogMotor)
     print 'retracting'
-    motor(c.cogMotor, -35)
-    msleep(200)
+    motor(c.cogMotor, -100)
+    while (seconds() - startTime < 10):
+        if igusReset():
+            freeze(c.cogMotor)
+            print'stopping'
+            break
+    freeze(c.cogMotor)
+    # resets based on motor forced stopping
+    '''previousCount= 0
+    clear_motor_position_counter(c.cogMotor)
+
     while (seconds() - startTime < 5):
         msleep(50)
         currentCount=get_motor_position_counter(c.cogMotor)
@@ -231,5 +238,4 @@ def resetChain():
         else:
             freeze(c.cogMotor)
             print'stopping'
-            break
-    freeze(c.cogMotor)
+            break'''
