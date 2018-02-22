@@ -22,14 +22,37 @@ def init():
         print("I AM PRIME")
     else:
         print("I DON'T KNOW WHAT I AM")
-    enable_servos()
-    set_servo_position(c.servoIgus, c.cogGrab)
-    set_servo_position(c.servoClaw, c.clawStart)
+    # enable_servos()
+    # set_servo_position(c.servoIgus, c.cogGrab)
+    # set_servo_position(c.servoClaw, c.clawStart)
+    selfTest()
+    DEBUG()
     resetChain()
     set_servo_position(c.servoIgus, c.cogStartBox)
     msleep(2000)
     moveServo(c.servoArm, c.armStartbox,5)
     wait_for_button()
+
+
+def selfTest():
+    enable_servo(c.servoArm)
+    moveServo(c.servoArm, c.armHorizontal, 10)
+    enable_servo(c.servoClaw)
+    moveServo(c.servoClaw, c.clawClosed, 15)
+    moveServo(c.servoClaw, c.clawStart, 15)
+    drive_timed(100, 100, 750)
+    drive_timed(0, 0, 250)
+    drive_timed(-100, -100, 750)
+    drive_timed(0, 0, 0)
+    moveServo(c.servoArm, c.armStartbox, 10)
+    msleep(250)
+    enable_servo(c.servoIgus)
+    moveServo(c.servoIgus, c.cogGrab, 10)
+    moveServo(c.servoIgus, c.cogPegTwo, 10)
+    msleep(250)
+    moveCog(100, 1500)
+    resetChain()
+
 
 def turnToRing():
     set_servo_position(c.servoArm,c.cogStart)
