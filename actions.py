@@ -26,6 +26,7 @@ def init():
     # set_servo_position(c.servoIgus, c.cogGrab)
     # set_servo_position(c.servoClaw, c.clawStart)
     selfTest()
+    #setUp()
     DEBUG()
     resetChain()
     set_servo_position(c.servoIgus, c.cogStartBox)
@@ -40,9 +41,9 @@ def selfTest():
     enable_servo(c.servoClaw)
     moveServo(c.servoClaw, c.clawClosed, 15)
     moveServo(c.servoClaw, c.clawStart, 15)
-    drive_timed(100, 100, 750)
-    drive_timed(0, 0, 250)
     drive_timed(-100, -100, 750)
+    drive_timed(0, 0, 250)
+    drive_timed(100, 100, 750)
     drive_timed(0, 0, 0)
     moveServo(c.servoArm, c.armStartbox, 10)
     msleep(250)
@@ -52,6 +53,14 @@ def selfTest():
     msleep(250)
     moveCog(100, 1500)
     resetChain()
+
+
+def setUp():
+    #sets up create for cog railway
+    enable_servo(c.servoArm)
+    moveServo(c.servoArm, 400, 10)
+    drive_timed(-150, 20, 1750)
+    drive_timed(0, 0, 0)
 
 
 def turnToRing():
