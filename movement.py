@@ -217,12 +217,12 @@ def moveCog(speed, time):
 
 def resetChain():
     startTime = seconds()
-    print 'retracting'
+    print('retracting')
     motor(c.cogMotor, -100)
     while (seconds() - startTime < 10):
         if igusReset():
             freeze(c.cogMotor)
-            print'stopping'
+            print('stopping')
             break
     freeze(c.cogMotor)
     # resets based on motor forced stopping
