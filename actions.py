@@ -54,36 +54,41 @@ def turnToRing():
     print ('Turn to ring')
     set_servo_position(c.servoArm,c.cogStart)
     msleep(1000)
-    drive_timed(0, 100, 1700)
+    drive_timed(-100, -100, 1000)
+    drive_timed(25, 100, 3000)
     #drive_timed(200, 200, 1400)#900#750
     #drive_timed(200, -200, 600)
     set_servo_position(c.servoIgus, c.cogGrab)
-    drive_timed(-60, -200, 1000)#1700
+    #drive_timed(-100, -100, 1600)#1700
     moveCog(95, 1100)  # 1175
     msleep(1000)
-    DEBUG()
+    drive_timed(-50, -50, 3700)
 
 def liftRing():
     moveServo(c.servoIgus, c.cogStart - 450, 5)
-    moveCog(100, 2000)
+    moveCog(100, 2200)
     moveServo(c.servoIgus, c.cogStart - 650, 5)
+    drive_timed(-90, -100, 800)
+
 
 def makeTurn():
     #Continues up with the ring, turning so it does not hit the blocks
     #Right now the robot is very close to the blocks (though not touching)
     #Improve this!!
-    turnAcrossBlack(50,-50)
-    DEBUG()
+    #turnAcrossBlack(50,-50)
+    #lineFollowRightAndLift(3500)
+
     #add line follows
     motor(c.cogMotor, 100)
-    drive_timed(-50, -75, 2000)
+    drive_timed(-50, -60, 2000)
     motor(c.cogMotor, 0)
-    drive_timed(-75, -50, 2000)
+    drive_timed(-60, -50, 2000)
     moveCog(100, 1000)
-    moveServo(c.servoIgus, c.cogStart - 850, 5)
+    moveServo(c.servoIgus, c.cogStartBox, 5)
     drive_timed(-75, -75, 1000)
     moveCog(100, 600)
-    drive_timed(-75, -75, 2500)
+    drive_timed(-75, -75, 1900)
+    rotate_degrees(5,100)
 
 def dropRing():
     #This drops the ring on the highest rung
@@ -93,14 +98,15 @@ def dropRing():
     moveCog(-100, 500)
     drive_timed(-50, 50, 1000)
     moveServo(c.servoIgus, c.cogStart - 300, 5)
-    moveCog(-100, 4500)
+    resetChain()
 
 def slideTram():
     #Depends on position after drop, so may need to be changed as drop method changes
-    drive_timed(200,140,1700)
-    drive_timed(-185,185,2150)
+    rotate_degrees(150, 100)
+    drive_timed(-100, -100, 2500)
     moveServo(c.servoClaw, c.clawTram, 10)
-    drive_timed(150,150,875)
+    moveServo(c.servoArm,c.armHigh, 5)
+    drive_timed(0,200,1100)
     drive_timed(100, 0, 4000)
     drive_timed(100, 100, 4000)
 
