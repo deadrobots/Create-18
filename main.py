@@ -7,7 +7,7 @@ import utils as u
 import movement as m
 
 def main():
-    print ("Running my code")
+    print ("Running")
     #Code moves ring to top rung and then pushes the tram to the middle (usually)
     act.init()
     act.turnToRing()
@@ -16,12 +16,12 @@ def main():
     act.dropRing()
     u.DEBUG()
     act.slideTram()
-    act.getOutOfSB()
-    act.raiseCog()
-    act.startDriving()
+    #act.getOutOfSB()
+    #act.raiseCog()
+    #act.startDriving()
 
-    #act.goToCenter()
-    #act.driveBotGuy()
+    act.goToCenter()
+    act.driveBotGuy()
 
 
     create_disconnect()
