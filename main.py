@@ -12,14 +12,13 @@ def main():
     act.init()
     act.turnToRing()
     act.liftRing()
-    act.makeTurn()
+    act.raiseRing()
     act.dropRing()
-    u.DEBUG()
     act.slideTram()
     #act.getOutOfSB()
     #act.raiseCog()
     #act.startDriving()
-
+    u.DEBUG()
     act.goToCenter()
     act.driveBotGuy()
 

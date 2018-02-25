@@ -191,6 +191,15 @@ def timedLineFollowLeft(time):
             create_drive_direct(50, 100)
     create_stop()
 
+def timedLineFollowLeftFront(time):
+    sec = seconds()
+    while(seconds() - sec<time):
+        if get_create_lfcliff_amt() < 2000:
+            create_drive_direct(100, 50)
+        else:
+            create_drive_direct(50, 100)
+    create_stop()
+
 def timedLineFollowRight(time):
     sec = seconds()
     while(seconds() - sec<time):
@@ -258,3 +267,22 @@ def resetChain():
             freeze(c.cogMotor)
             print'stopping'
             break'''
+
+INCHES_TO_TICKS = 560
+
+def moveCog_position (inches,speed):
+    print ("extending exact distance")
+    clear_motor_position_counter(c.cogMotor)
+    ticks = INCHES_TO_TICKS * inches
+    if inches >= 0:
+        motor(c.cogMotor, speed)
+        while get_motor_position_counter(c.cogMotor) <= ticks:
+            pass
+    else:
+        speed = -speed
+        motor(c.cogMotor, speed)
+        while get_motor_position_counter(c.cogMotor) >= ticks:
+            pass
+    motor(c.cogMotor, 0)
+    print (ticks)
+    print (get_motor_position_counter(c.cogMotor))

@@ -41,6 +41,7 @@ if IS_PRIME:
     armOut = 800
     armup = 1200
     armHigh = 1500
+    armVeryHigh = 1800
 
     #Claw Servo Values
     clawClosed = 0
@@ -63,6 +64,7 @@ else:
     armHorizontal = 800
     armup = 1100
     armHigh = 1400
+    armVeryHigh = 1700
 
     #Claw Servo Values
     clawClosed = 230
@@ -72,6 +74,7 @@ else:
 
     #Cog Servo Values
     cogStartBox = 0
+    cogRingDrop = 225 #was 250
     cogPegTwo = 500  # was 600
     cogStart = 800 #was 900
     cogGrab = 980

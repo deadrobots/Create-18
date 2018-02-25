@@ -22,13 +22,11 @@ def init():
         print("I AM PRIME")
     else:
         print("I DON'T KNOW WHAT I AM")
-    # enable_servos()
-    # set_servo_position(c.servoIgus, c.cogGrab)
-    # set_servo_position(c.servoClaw, c.clawStart)
     selfTest()
     print("Press right button to continue")
     wait_for_button()
     print("Pressed.")
+    c.START_TIME = seconds()
 
 def selfTest():
     enable_servo(c.servoArm)
@@ -49,67 +47,115 @@ def selfTest():
     moveCog(100, 1500)
     resetChain()
 
-
 def turnToRing():
     print ('Turn to ring')
-    set_servo_position(c.servoArm,c.cogStart)
+    set_servo_position(c.servoArm,c.cogStart + 200)
     msleep(1000)
-    drive_timed(-100, -100, 1000)
-    drive_timed(25, 100, 3000)
-    #drive_timed(200, 200, 1400)#900#750
-    #drive_timed(200, -200, 600)
+    drive_timed(-100, -100, 250)
+    drive_timed(100, 0, 1200)
+    drive_timed(100, 100, 1700) #squares up to west wall
+    drive_timed(-100, -95, 1500)
+    drive_timed(-180, 180, 1000)
+    drive_timed(100, 100, 1200)
     set_servo_position(c.servoIgus, c.cogGrab)
-    #drive_timed(-100, -100, 1600)#1700
-    moveCog(95, 1100)  # 1175
+    moveCog_position(2.5, 95)
     msleep(1000)
-    drive_timed(-50, -50, 3700)
+    drive_timed(-50, -50, 4000)
 
 def liftRing():
     moveServo(c.servoIgus, c.cogStart - 450, 5)
-    moveCog(100, 2200)
-    moveServo(c.servoIgus, c.cogStart - 650, 5)
-    drive_timed(-90, -100, 800)
+    moveCog_position(5.75, 100)
+    moveServo(c.servoIgus, c.cogStart - 600, 5)
+    timedLineFollowLeftFront(1)
 
 
-def makeTurn():
+def raiseRing():
     #Continues up with the ring, turning so it does not hit the blocks
     #Right now the robot is very close to the blocks (though not touching)
     #Improve this!!
-    #turnAcrossBlack(50,-50)
-    #lineFollowRightAndLift(3500)
-
-    #add line follows
     motor(c.cogMotor, 100)
-    drive_timed(-50, -60, 2000)
+    timedLineFollowLeftFront(1.7)
     motor(c.cogMotor, 0)
-    drive_timed(-60, -50, 2000)
-    moveCog(100, 1000)
+    timedLineFollowLeftFront(1.7)
     moveServo(c.servoIgus, c.cogStartBox, 5)
-    drive_timed(-75, -75, 1000)
-    moveCog(100, 600)
-    drive_timed(-75, -75, 1900)
-    rotate_degrees(5,100)
+    timedLineFollowLeftFront(.75)
+    moveCog_position(5.5, 50)
+    timedLineFollowLeftFront(1.4)
 
 def dropRing():
-    #This drops the ring on the highest rung
-    #Method works usually, but occasionally the Igus chain curls up, and the chain gets stuck
-    #A better method of removing the Igus arm should be made!!!
-    moveServo(c.servoIgus, c.cogStart - 650, 5)
-    moveCog(-100, 500)
-    drive_timed(-50, 50, 1000)
-    moveServo(c.servoIgus, c.cogStart - 300, 5)
+    moveCog_position(-5, 100)
+    moveServo(c.servoIgus, c.cogRingDrop, 5)
+    moveCog_position(-2, 100)
+    drive_timed(-50, 50, 1200)
+    moveServo(c.servoIgus, c.cogPegTwo, 3)
     resetChain()
 
 def slideTram():
     #Depends on position after drop, so may need to be changed as drop method changes
-    rotate_degrees(150, 100)
+    moveServo(c.servoClaw, c.clawClosed, 20)
+    moveServo(c.servoArm, c.armVeryHigh, 10)
+    rotate_degrees(-165, 100)
+    moveServo(c.servoArm, c.armHigh, 5)
+    rotate_degrees(-75, 100)
+    drive_timed(100, 100, 1250)
+    rotate_degrees(-25, 100)
+    drive_timed(100, 100, 2000)
+    rotate_degrees(50, 100)
+    drive_timed(-100, -100, 1000)
+    moveServo(c.servoClaw, c.clawOpen, 20)
+    drive_timed(100, 100, 1000)
+    DEBUG()
+
+
     drive_timed(-100, -100, 2500)
     moveServo(c.servoClaw, c.clawTram, 10)
-    moveServo(c.servoArm,c.armHigh, 5)
-    drive_timed(0,200,1100)
+    drive_timed(100,200,1900)
     drive_timed(100, 0, 4000)
-    drive_timed(100, 100, 4000)
+    drive_timed(100, 100, 4300)
+    wait_for_button()
 
+
+
+
+def goToCenter():
+    #Create line follows to middle then goes to right of center area to reach Botguy
+    lineFollowTilCrossBlack()
+    timedLineFollow(.85)
+    set_servo_position(c.servoClaw, c.clawClosed)
+    wait_for_button()
+    #drive_timed(150, -250, 1000)
+    #msleep(2000)
+    #drive_timed(0, 600, 300)
+    #msleep(3000)
+    #drive_timed(0, -600, 300)
+    drive_timed(150, -250, 900)
+    moveServo(c.servoArm , c.armHorizontal, 5)
+    drive_timed(75,75,500)
+    set_servo_position(c.servoClaw, c.clawOpen)
+    msleep(600)
+    drive_timed(150, -250, 1500)
+    drive_timed(75,75,4000)
+    drive_timed(75, -175, 400)
+    drive_timed(-75, -75, 500)
+    drive_timed(75,75,2500)
+    set_servo_position(c.servoClaw, c.clawClosed)
+    msleep(500)
+    set_servo_position(c.servoClaw, c.clawOpen)
+    driveTilBlackRCliff(150)
+    turnTilBlackLCliff(100, 0)
+    drive_timed(-130, -130, 800)
+    set_servo_position(c.servoArm, c.armHigh)
+
+    msleep(500)
+    drive_timed(-100, -100, 2000)
+    moveServo(c.servoArm, c.armup, 10)
+    msleep(2000)
+    moveServo(c.servoArm, 1420, 10)
+    drive_timed(100,100,2000)
+    DEBUG()
+
+    #functions not used
+    #placed out of way
 def getOutOfSB():
     #Gets Create out of start box and ready to line follow
     print "Push left button to end"
@@ -141,47 +187,9 @@ def startDriving():
     drive_timed(-100, -100, 1000)
     driveAndLift(750)
     msleep(1000)
-    lineFollowAndLift()
+    lineFollowLeftAndLift()
     DEBUG()
 
-
-
-
-def goToCenter():
-    #Create line follows to middle then goes to right of center area to reach Botguy
-    lineFollowTilCrossBlack()
-    timedLineFollow(.85)
-    set_servo_position(c.servoClaw, c.clawClosed)
-    #drive_timed(150, -250, 1000)
-    #msleep(2000)
-    #drive_timed(0, 600, 300)
-    #msleep(3000)
-    #drive_timed(0, -600, 300)
-    drive_timed(150, -250, 900)
-    set_servo_position(c.servoArm, 819)
-    drive_timed(-75,-75,500)
-    set_servo_position(c.servoClaw, c.clawOpen)
-    msleep(600)
-    drive_timed(150, -250, 1500)
-    drive_timed(75,75,4000)
-    drive_timed(75, -175, 400)
-    drive_timed(-75, -75, 500)
-    drive_timed(75,75,2500)
-    set_servo_position(c.servoClaw, c.clawClosed)
-    msleep(500)
-    set_servo_position(c.servoClaw, c.clawOpen)
-    driveTilBlackRCliff(150)
-    turnTilBlackLCliff(100, 0)
-    drive_timed(-130, -130, 800)
-    set_servo_position(c.servoArm, c.armHigh)
-
-    msleep(500)
-    drive_timed(-100, -100, 2000)
-    moveServo(c.servoArm, c.armup, 10)
-    msleep(2000)
-    moveServo(c.servoArm, 1420, 10)
-    drive_timed(100,100,2000)
-    DEBUG()
 
 
 
