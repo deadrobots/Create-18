@@ -58,7 +58,7 @@ def turnToRing():
     drive_timed(-180, 180, 1000)
     drive_timed(100, 100, 1200)
     set_servo_position(c.servoIgus, c.cogGrab)
-    moveCog_position(2.5, 95)
+    moveCog_position(2.8, 95)
     msleep(1000)
     drive_timed(-50, -50, 4000)
 
@@ -70,14 +70,11 @@ def liftRing():
 
 
 def raiseRing():
-    #Continues up with the ring, turning so it does not hit the blocks
-    #Right now the robot is very close to the blocks (though not touching)
-    #Improve this!!
     motor(c.cogMotor, 100)
     timedLineFollowLeftFront(1.7)
     motor(c.cogMotor, 0)
     timedLineFollowLeftFront(1.7)
-    moveServo(c.servoIgus, c.cogStartBox, 5)
+    moveServo(c.servoIgus, c.cogRingDrop-150, 5)
     timedLineFollowLeftFront(.75)
     moveCog_position(5.5, 50)
     timedLineFollowLeftFront(1.4)
@@ -97,15 +94,19 @@ def slideTram():
     rotate_degrees(-165, 100)
     moveServo(c.servoArm, c.armHigh, 5)
     rotate_degrees(-75, 100)
-    drive_timed(100, 100, 1250)
+    drive_timed(100, 100, 1250) #shorter drive
     rotate_degrees(-25, 100)
-    drive_timed(100, 100, 2000)
+    drive_timed(100, 100, 2000) #shorter
     rotate_degrees(50, 100)
-    drive_timed(-100, -100, 1000)
-    moveServo(c.servoClaw, c.clawOpen, 20)
-    drive_timed(100, 100, 1000)
-    DEBUG()
+    drive_timed(-100, -100, 3000)
+    turnAcrossBlack(-50,-100)
+    rotate_degrees(15, 20)
+    drive_timed(-100, -100, 2000)
+    rotate_degrees(-90,75)
+    drive_distance(9,100)
+    #drive_timed(75, 100, 2500)
 
+    DEBUG()
 
     drive_timed(-100, -100, 2500)
     moveServo(c.servoClaw, c.clawTram, 10)
@@ -113,9 +114,6 @@ def slideTram():
     drive_timed(100, 0, 4000)
     drive_timed(100, 100, 4300)
     wait_for_button()
-
-
-
 
 def goToCenter():
     #Create line follows to middle then goes to right of center area to reach Botguy

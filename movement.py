@@ -156,7 +156,6 @@ def turnTilBlackRCliff(left, right):
         pass
     create_stop()
 
-
 def driveAcrossBlack(speed):
     create_drive_direct(speed, speed)
     while (get_create_lcliff_amt() > 2000):
