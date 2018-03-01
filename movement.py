@@ -266,8 +266,10 @@ def resetChain():
             freeze(c.cogMotor)
             print'stopping'
             break'''
-
-INCHES_TO_TICKS = 560
+if c.IS_PRIME:
+    INCHES_TO_TICKS = 600
+else:
+    INCHES_TO_TICKS = 560
 
 def moveCog_position (inches,speed):
     print ("extending exact distance")

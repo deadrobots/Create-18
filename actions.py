@@ -49,12 +49,15 @@ def selfTest():
 
 def turnToRing():
     print ('Turn to ring')
-    set_servo_position(c.servoArm,c.cogStart + 200)
+    set_servo_position(c.servoArm,c.armUp)
     msleep(1000)
     drive_timed(-100, -100, 250)
     drive_timed(100, 0, 1200)
     drive_timed(100, 100, 1700) #squares up to west wall
-    drive_timed(-100, -95, 1500)
+    if c.IS_PRIME:
+        drive_timed(-100, -85, 1300)
+    else:
+        drive_timed(-100, -95, 1500)
     drive_timed(-180, 180, 1000)
     drive_timed(100, 100, 1200)
     set_servo_position(c.servoIgus, c.cogGrab)
@@ -63,20 +66,30 @@ def turnToRing():
     drive_timed(-50, -50, 4000)
 
 def liftRing():
-    moveServo(c.servoIgus, c.cogStart - 450, 5)
-    moveCog_position(5.75, 100)
-    moveServo(c.servoIgus, c.cogStart - 600, 5)
+    if c.IS_PRIME:
+        moveServo(c.servoIgus, c.cogStart - 450, 5)
+        moveCog_position(5, 100)
+        moveServo(c.servoIgus, c.cogPegTwo, 5)
+    else:
+        moveServo(c.servoIgus, c.cogStart - 450, 5)
+        moveCog_position(5.75, 100)
+        moveServo(c.servoIgus, c.cogStart - 600, 5)
     timedLineFollowLeftFront(1)
-
 
 def raiseRing():
     motor(c.cogMotor, 100)
     timedLineFollowLeftFront(1.7)
     motor(c.cogMotor, 0)
     timedLineFollowLeftFront(1.7)
-    moveServo(c.servoIgus, c.cogRingDrop-150, 5)
+    if c.IS_PRIME:
+        moveServo(c.servoIgus,c.cogRingDrop,5)
+    else:
+        moveServo(c.servoIgus, c.cogRingDrop-150, 5)
     timedLineFollowLeftFront(.75)
-    moveCog_position(5.5, 50)
+    if c.IS_PRIME:
+        moveCog_position(4,50)
+    else:
+        moveCog_position(5.5, 50)
     timedLineFollowLeftFront(1.4)
 
 def dropRing():
@@ -84,7 +97,7 @@ def dropRing():
     moveServo(c.servoIgus, c.cogRingDrop, 5)
     moveCog_position(-2, 100)
     drive_timed(-50, 50, 1200)
-    moveServo(c.servoIgus, c.cogPegTwo, 3)
+    moveServo(c.servoIgus, c.cogStart-300, 3)
     resetChain()
 
 def slideTram():
@@ -145,7 +158,7 @@ def goToCenter():
 
     msleep(500)
     drive_timed(-100, -100, 2000)
-    moveServo(c.servoArm, c.armup, 10)
+    moveServo(c.servoArm, c.armUp, 10)
     msleep(2000)
     moveServo(c.servoArm, 1420, 10)
     drive_timed(100,100,2000)
