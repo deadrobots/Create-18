@@ -29,23 +29,31 @@ def init():
     c.START_TIME = seconds()
 
 def selfTest():
+    # raise arm
     enable_servo(c.servoArm)
     moveServo(c.servoArm, c.armHorizontal, 10)
+    # open/close claw
     enable_servo(c.servoClaw)
     moveServo(c.servoClaw, c.clawClosed, 15)
     moveServo(c.servoClaw, c.clawStart, 15)
+    # test drive
     drive_timed(-100, -100, 750)
     drive_timed(0, 0, 250)
     drive_timed(100, 100, 750)
     drive_timed(0, 0, 0)
-    moveServo(c.servoArm, c.armStartbox, 10)
     msleep(250)
+    # lower ramp
     enable_servo(c.servoIgus)
     moveServo(c.servoIgus, c.cogGrab, 10)
+    # move the chain
+    moveCog(100, 1500)# enables cog
+    resetChain()
+    # raise ramp
     moveServo(c.servoIgus, c.cogPegTwo, 10)
     msleep(250)
-    moveCog(100, 1500)
-    resetChain()
+    # lower arm
+    moveServo(c.servoArm, c.armStartbox, 10)
+
 
 def turnToRing():
     print ('Turn to ring')
@@ -78,19 +86,21 @@ def liftRing():
 
 def raiseRing():
     motor(c.cogMotor, 100)
-    timedLineFollowLeftFront(1.7)
+    timedLineFollowLeftFront(1.5)
     motor(c.cogMotor, 0)
     timedLineFollowLeftFront(1.7)
     if c.IS_PRIME:
-        moveServo(c.servoIgus,c.cogRingDrop,5)
+        moveServo(c.servoIgus, 770,5)
     else:
         moveServo(c.servoIgus, c.cogRingDrop-150, 5)
     timedLineFollowLeftFront(.75)
+    wait_for_button()
     if c.IS_PRIME:
-        moveCog_position(4,50)
+        moveCog_position(5,50)
     else:
         moveCog_position(5.5, 50)
     timedLineFollowLeftFront(1.4)
+
 
 def dropRing():
     moveCog_position(-5, 100)
