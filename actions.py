@@ -5,7 +5,7 @@ from wallaby import *
 
 
 def init():
-    '''For Setup: 
+    '''For Setup:
     Make sure that both bumpers are touching the back edges of the starting box
     Point the "arm" at the opposite corner of starting box (intersection of black tape)
     Use pencil marks on table to check alignment
@@ -27,6 +27,26 @@ def init():
     wait_for_button()
     print("Pressed.")
     c.START_TIME = seconds()
+
+def getFrisbee():
+    #Goal is to grab date tree frisbees and make a date sanwich
+    #Then back up and deposit your fresh date sandwich into the tram bin
+    moveServo(c.servoArm, c.armVeryHigh, 15)
+    moveServo(c.servoClaw, c.clawOpen, 15)
+    drive_timed(-150, -150, 1600)
+    rotate_degrees(22, 150)
+    moveServo(c.servoArm, c.armSandwich, 15)
+    wait_for_button()
+    moveServo(c.servoClaw, c.clawMid, 15)
+    moveServo(c.servoArm, c.armUp, 5)
+    wait_for_button()
+    drive_timed(-100,-100, 1000)
+    rotate_degrees(7, 50)
+    moveServo(c.servoArm, c.armHigh, 5)
+    drive_timed(50, 50, 2000)
+    moveServo(c.servoClaw, c.clawOpen, 5)
+    drive_timed(-50, -50, 2000)
+    moveServo(c.servoClaw, c.clawClosed, 5)
 
 def selfTest():
     # raise arm
@@ -52,7 +72,7 @@ def selfTest():
     moveServo(c.servoIgus, c.cogPegTwo, 10)
     msleep(250)
     # lower the arm
-    moveServo(c.servoArm, c.armStartbox, 10)
+    moveServo(c.servoArm, c.armVeryHigh, 10)#armStartbox
 
 
 def turnToRing():

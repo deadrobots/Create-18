@@ -35,12 +35,14 @@ IGUS_BUTTON = 9
 if IS_PRIME:
 
     #Arm Servo Values
-    armStartbox = 400  # 520 #2017
+    #All values are increased by 200 for CreateYellow(frisbeeGrabber)
+    armStartbox = 400  #600#520 #2017
     armBotguy = 570
     armLow = 650
+    armSandwich = 720
     armOut = 800
     armHorizontal = 900
-    armUp = 1200
+    armUp = 1250
     armHigh = 1500
     armVeryHigh = 1700
 
@@ -49,6 +51,7 @@ if IS_PRIME:
     clawTram = 600 #Position to move tram
     clawOpen = 1065
     clawStart = 1730 #All the way back
+    clawMid = 100
 
     #Cog Servo Values
     cogRingDrop = 900
