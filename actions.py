@@ -5,7 +5,7 @@ from wallaby import *
 
 
 def init():
-    '''For Setup:
+    '''For Setup: 
     Make sure that both bumpers are touching the back edges of the starting box
     Point the "arm" at the opposite corner of starting box (intersection of black tape)
     Use pencil marks on table to check alignment
