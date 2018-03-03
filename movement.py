@@ -156,7 +156,6 @@ def turnTilBlackRCliff(left, right):
         pass
     create_stop()
 
-
 def driveAcrossBlack(speed):
     create_drive_direct(speed, speed)
     while (get_create_lcliff_amt() > 2000):
@@ -186,13 +185,41 @@ def timedLineFollowLeft(time):
     sec = seconds()
     while(seconds() - sec<time):
         if get_create_lcliff_amt() < 2000:
-            create_drive_direct(150, 100)
+            create_drive_direct(100, 50)
         else:
-            create_drive_direct(100, 150)
+            create_drive_direct(50, 100)
     create_stop()
 
+def timedLineFollowLeftFront(time):
+    sec = seconds()
+    while(seconds() - sec<time):
+        if get_create_lfcliff_amt() < 2000:
+            create_drive_direct(100, 50)
+        else:
+            create_drive_direct(50, 100)
+    create_stop()
 
-def lineFollowAndLift(time):
+def timedLineFollowRight(time):
+    sec = seconds()
+    while(seconds() - sec<time):
+        if get_create_rcliff_amt() < 2000:
+            create_drive_direct(100, 50)
+        else:
+            create_drive_direct(50, 100)
+    create_stop()
+
+def lineFollowRightAndLift(time):
+    sec = seconds()
+    while (seconds() - sec < time):
+        i = 0
+        if i < 1:
+            timedLineFollowRight(.1)
+            i += 1
+        else:
+            moveCog(50, 100)
+            i += 1
+
+def lineFollowLeftAndLift(time):
     sec = seconds()
     while (seconds() - sec < time):
         i = 0
@@ -217,12 +244,12 @@ def moveCog(speed, time):
 
 def resetChain():
     startTime = seconds()
-    print 'retracting'
+    print('retracting')
     motor(c.cogMotor, -100)
     while (seconds() - startTime < 10):
         if igusReset():
             freeze(c.cogMotor)
-            print'stopping'
+            print('stopping')
             break
     freeze(c.cogMotor)
     # resets based on motor forced stopping
@@ -239,3 +266,24 @@ def resetChain():
             freeze(c.cogMotor)
             print'stopping'
             break'''
+if c.IS_PRIME:
+    INCHES_TO_TICKS = 600
+else:
+    INCHES_TO_TICKS = 560
+
+def moveCog_position (inches,speed):
+    print ("extending exact distance")
+    clear_motor_position_counter(c.cogMotor)
+    ticks = INCHES_TO_TICKS * inches
+    if inches >= 0:
+        motor(c.cogMotor, speed)
+        while get_motor_position_counter(c.cogMotor) <= ticks:
+            pass
+    else:
+        speed = -speed
+        motor(c.cogMotor, speed)
+        while get_motor_position_counter(c.cogMotor) >= ticks:
+            pass
+    motor(c.cogMotor, 0)
+    print (ticks)
+    print (get_motor_position_counter(c.cogMotor))
