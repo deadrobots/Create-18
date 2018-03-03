@@ -51,7 +51,7 @@ def selfTest():
     # raise ramp
     moveServo(c.servoIgus, c.cogPegTwo, 10)
     msleep(250)
-    # lower arm
+    # lower the arm
     moveServo(c.servoArm, c.armStartbox, 10)
 
 
