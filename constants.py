@@ -25,7 +25,7 @@ ROBOT_NAME = "Create-17"
 #servoCog = 1
 
 #Servo ports for red Create
-servoArm = 1
+servoArm = 0
 servoClaw = 2
 servoIgus = 3
 

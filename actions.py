@@ -38,9 +38,8 @@ def selfTest():
     moveServo(c.servoClaw, c.clawStart, 15)
     # test drive
     drive_timed(-100, -100, 750)
-    drive_timed(0, 0, 250)
+    msleep(250)
     drive_timed(100, 100, 750)
-    drive_timed(0, 0, 0)
     msleep(250)
     # lower ramp
     enable_servo(c.servoIgus)
@@ -67,11 +66,14 @@ def turnToRing():
     else:
         drive_timed(-100, -95, 1500)
     drive_timed(-180, 180, 1000)
-    drive_timed(100, 100, 1200)
+
+    drive_timed(100, 100, 1000) #1200
     set_servo_position(c.servoIgus, c.cogGrab)
     moveCog_position(2.8, 95)
     msleep(1000)
-    drive_timed(-50, -50, 4000)
+    driveTilBlackLCliff(100)
+    drive_timed(-50, -50, 500)
+
 
 def liftRing():
     if c.IS_PRIME:
@@ -93,13 +95,14 @@ def raiseRing():
         moveServo(c.servoIgus, 770,5)
     else:
         moveServo(c.servoIgus, c.cogRingDrop-150, 5)
-    timedLineFollowLeftFront(.75)
+    # timedLineFollowLeftFront(.75)
+    lineFollowLeftFrontTilBlack()
     if c.IS_PRIME:
-        moveCog_position(5,50)
+        moveCog_position(5, 50)
     else:
         moveCog_position(5.5, 50)
-    timedLineFollowLeftFront(1.4)
-
+    lineFollowLeftFrontTilWhite()
+    timedLineFollowLeftFront(.5)
 
 def dropRing():
     moveCog_position(-5, 100)
@@ -115,12 +118,16 @@ def slideTram():
     moveServo(c.servoArm, c.armVeryHigh, 10)
     rotate_degrees(-165, 100)
     moveServo(c.servoArm, c.armHigh, 5)
+    drive_timed(100, 100, 200)
     rotate_degrees(-75, 100)
     drive_timed(100, 100, 1250) #shorter drive
     rotate_degrees(-25, 100)
     drive_timed(100, 100, 2000) #shorter
-    rotate_degrees(-10, 100)
-    drive_timed(100, 100, 2100)
+    rotate_degrees(-24, 100)
+    driveTilBlackLCliff(-100)
+    driveTilWhiteLCliff(-100)
+    drive_timed(100, 100, 1400)
+    DEBUG()
 
 def approachCenter():
     rotate_degrees(15, 20)

@@ -20,7 +20,6 @@ def main():
     #act.raiseCog()
     #act.startDriving()
     #act.goToCenter()
-    u.DEBUG()
     act.driveBotGuy()
 
 
