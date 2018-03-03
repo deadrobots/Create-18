@@ -94,7 +94,6 @@ def raiseRing():
     else:
         moveServo(c.servoIgus, c.cogRingDrop-150, 5)
     timedLineFollowLeftFront(.75)
-    wait_for_button()
     if c.IS_PRIME:
         moveCog_position(5,50)
     else:
@@ -120,22 +119,25 @@ def slideTram():
     drive_timed(100, 100, 1250) #shorter drive
     rotate_degrees(-25, 100)
     drive_timed(100, 100, 2000) #shorter
-    rotate_degrees(50, 100)
-    drive_timed(-100, -100, 3000)
-    turnAcrossBlack(-50,-100)
-    rotate_degrees(15, 20)
-    drive_timed(-100, -100, 2000)
-    rotate_degrees(-90,75)
-    drive_distance(9,100)
-    #drive_timed(75, 100, 2500)
-    DEBUG()
+    rotate_degrees(-10, 100)
+    drive_timed(100, 100, 2100)
 
-    drive_timed(-100, -100, 2500)
+def approachCenter():
+    rotate_degrees(15, 20)
+    drive_timed(-100, -100, 3500)
+    rotate_degrees(-90,75)
+    #drive_timed(75, 100, 2500)
+    drive_timed(100, 100, 3200)
     moveServo(c.servoClaw, c.clawTram, 10)
     drive_timed(100,200,1900)
     drive_timed(100, 0, 4000)
     drive_timed(100, 100, 4300)
-    wait_for_button()
+
+
+
+
+#test functions
+#not used, placed out of the way
 
 def goToCenter():
     #Create line follows to middle then goes to right of center area to reach Botguy
@@ -174,8 +176,6 @@ def goToCenter():
     drive_timed(100,100,2000)
     DEBUG()
 
-    #functions not used
-    #placed out of way
 def getOutOfSB():
     #Gets Create out of start box and ready to line follow
     print "Push left button to end"

@@ -73,8 +73,8 @@ def stop():
 
 
 INCH_TO_MIL = 25.4
-def drive_distance(distance, speed):
 
+def drive_distance(distance, speed):
     dist_mil = INCH_TO_MIL * distance
     time = dist_mil / speed
     drive_timed(speed, speed, time)
