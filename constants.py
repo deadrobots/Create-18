@@ -51,11 +51,11 @@ if IS_PRIME:
     clawStart = 1730 #All the way back
 
     #Cog Servo Values
-    cogRingDrop = 900
-    cogStartBox = 800
-    cogPegTwo = 1000
-    cogStart = 1700
-    cogGrab = 1780
+    cogRingDrop = 1100
+    cogStartBox = 1200
+    cogPegTwo = 1350
+    cogStart = 1650 #was 1550
+    cogGrab = 1800 #was 1780
 
 else:
     #Arm Servo Values
@@ -75,8 +75,8 @@ else:
     clawStart = 2047 #All the way back
 
     #Cog Servo Values
-    cogStartBox = 0
-    cogRingDrop = 225 #was 250
+    cogRingDrop = 225  # was 250
+    cogStartBox = 350
     cogPegTwo = 500  # was 600
     cogStart = 800 #was 900
     cogGrab = 980

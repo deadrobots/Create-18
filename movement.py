@@ -132,6 +132,18 @@ def lineFollowTilCrossBlack():
             create_drive_direct(150, 200)
     create_stop()
 
+def driveTilBlackLCliffAndSquareUp(speed):
+    create_drive_direct(speed, speed)
+    while (get_create_lcliff_amt() > 2000):
+        pass
+    create_drive_direct(0, speed)
+    while (get_create_rcliff_amt() > 2000):
+        pass
+    create_stop()
+
+
+
+
 def driveTilBlackLCliff(speed):
     create_drive_direct(speed, speed)
     while (get_create_lcliff_amt() > 2000):

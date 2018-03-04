@@ -43,12 +43,12 @@ def selfTest():
     msleep(250)
     # lower ramp
     enable_servo(c.servoIgus)
-    moveServo(c.servoIgus, c.cogGrab, 10)
+    moveServo(c.servoIgus, c.cogStart - 300, 10)
     # move the chain
     moveCog(100, 1500)# enables cog
     resetChain()
     # raise ramp
-    moveServo(c.servoIgus, c.cogPegTwo, 10)
+    moveServo(c.servoIgus, c.cogStartBox, 10)
     msleep(250)
     # lower the arm
     moveServo(c.servoArm, c.armStartbox, 10)
@@ -58,49 +58,63 @@ def turnToRing():
     print ('Turn to ring')
     set_servo_position(c.servoArm,c.armUp)
     msleep(1000)
-    drive_timed(-100, -100, 250)
-    drive_timed(100, 0, 1200)
+    if c.IS_PRIME:
+        pass
+    else:
+        drive_timed(-100, -100, 250)
+        drive_timed(100, 0, 1200)
     drive_timed(100, 100, 1700) #squares up to west wall
     if c.IS_PRIME:
         drive_timed(-100, -85, 1300)
     else:
         drive_timed(-100, -95, 1500)
     drive_timed(-180, 180, 1000)
-
     drive_timed(100, 100, 1000) #1200
     set_servo_position(c.servoIgus, c.cogGrab)
-    moveCog_position(2.8, 95)
+    if c.IS_PRIME:
+        moveCog_position(4, 95)
+    else:
+        moveCog_position(2.8, 95)
     msleep(1000)
     driveTilBlackLCliff(100)
-    drive_timed(-50, -50, 500)
+    if c.IS_PRIME:
+        drive_timed(-50, -50, 800)
+    else:
+        drive_timed(-50, -50, 500)
 
 
 def liftRing():
     if c.IS_PRIME:
-        moveServo(c.servoIgus, c.cogStart - 450, 5)
-        moveCog_position(5, 100)
-        moveServo(c.servoIgus, c.cogPegTwo, 5)
+        moveServo(c.servoIgus, c.cogStart - 250, 5)
+        moveCog_position(6, 100)
+        moveServo(c.servoIgus, c.cogStart - 350, 5)
     else:
         moveServo(c.servoIgus, c.cogStart - 450, 5)
         moveCog_position(5.75, 100)
         moveServo(c.servoIgus, c.cogStart - 600, 5)
+    DEBUG()
     timedLineFollowLeftFront(1)
 
 def raiseRing():
     motor(c.cogMotor, 100)
-    timedLineFollowLeftFront(1.5)
+    #moveServo(c.servoIgus, c.cogStart - 610, 5)
+    timedLineFollowLeftFront(2.2) #was 1.6
     motor(c.cogMotor, 0)
-    timedLineFollowLeftFront(1.7)
+    moveServo(c.servoIgus, c.cogStart - 650, 5)
+    timedLineFollowLeftFront(1) #was 1.6
     if c.IS_PRIME:
         moveServo(c.servoIgus, 770,5)
     else:
         moveServo(c.servoIgus, c.cogRingDrop-150, 5)
+        motor(c.cogMotor, 100)
     # timedLineFollowLeftFront(.75)
     lineFollowLeftFrontTilBlack()
+    motor(c.cogMotor, 0)
     if c.IS_PRIME:
         moveCog_position(5, 50)
     else:
-        moveCog_position(5.5, 50)
+        #moveCog_position(5.5, 50)
+        pass
     lineFollowLeftFrontTilWhite()
     timedLineFollowLeftFront(.5)
 
@@ -124,21 +138,12 @@ def slideTram():
     rotate_degrees(-25, 100)
     drive_timed(100, 100, 2000) #shorter
     rotate_degrees(-24, 100)
-    driveTilBlackLCliff(-100)
+    driveTilBlackLCliffAndSquareUp(-100)
     driveTilWhiteLCliff(-100)
-    drive_timed(100, 100, 1400)
-    DEBUG()
+    drive_timed(100, 100, 1200)
 
 def approachCenter():
-    rotate_degrees(15, 20)
-    drive_timed(-100, -100, 3500)
-    rotate_degrees(-90,75)
-    #drive_timed(75, 100, 2500)
-    drive_timed(100, 100, 3200)
-    moveServo(c.servoClaw, c.clawTram, 10)
-    drive_timed(100,200,1900)
-    drive_timed(100, 0, 4000)
-    drive_timed(100, 100, 4300)
+    drive_timed(-150, 0, 2000)
 
 
 
