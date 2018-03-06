@@ -78,7 +78,7 @@ def turnToRing():
     msleep(1000)
     driveTilBlackLCliff(100)
     if c.IS_PRIME:
-        drive_timed(-50, -50, 800)
+        drive_timed(-50, -50, 900)
     else:
         drive_timed(-50, -50, 500)
 
@@ -92,16 +92,38 @@ def liftRing():
         moveServo(c.servoIgus, c.cogStart - 450, 5)
         moveCog_position(5.75, 100)
         moveServo(c.servoIgus, c.cogStart - 600, 5)
-    DEBUG()
-    timedLineFollowLeftFront(1)
+        timedLineFollowLeftFront(1)
+
+def raiseRing2():
+    # Prime
+    timedLineFollowLeftFront(1.9)
+    moveServo(c.servoIgus, 1090, 5)
+    moveCog_position(2.5, 100)
+    timedLineFollowLeftFront(1.9)
+    moveServo(c.servoIgus, 980, 5)
+    moveCog_position(4, 100)
+    lineFollowLeftFrontTilBlack()
+    lineFollowLeftFrontTilWhite()
+    moveServo(c.servoIgus, 920, 5)
+    moveCog_position(2, 100)
+    timedLineFollowLeftFront(2)
 
 def raiseRing():
-    motor(c.cogMotor, 100)
-    #moveServo(c.servoIgus, c.cogStart - 610, 5)
-    timedLineFollowLeftFront(2.2) #was 1.6
-    motor(c.cogMotor, 0)
-    moveServo(c.servoIgus, c.cogStart - 650, 5)
-    timedLineFollowLeftFront(1) #was 1.6
+    if c.IS_PRIME:
+        motor(c.cogMotor, 100)
+        moveServo(c.servoIgus, c.cogStart - 620, 5)
+        timedLineFollowLeftFront(2.2) #was 1.6
+        motor(c.cogMotor, 0)
+        moveServo(c.servoIgus, c.cogStart - 640, 5)
+        timedLineFollowLeftFront(1) #was 1.6
+    else:
+        motor(c.cogMotor, 100)
+        moveServo(c.servoIgus, c.cogStart - 610, 5)
+        timedLineFollowLeftFront(2.2)  # was 1.6
+        motor(c.cogMotor, 0)
+        moveServo(c.servoIgus, c.cogStart - 650, 5)
+        timedLineFollowLeftFront(1)  # was 1.6
+    DEBUG()
     if c.IS_PRIME:
         moveServo(c.servoIgus, 770,5)
     else:
