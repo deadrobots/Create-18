@@ -133,12 +133,18 @@ def lineFollowTilCrossBlack():
     create_stop()
 
 def driveTilBlackLCliffAndSquareUp(speed):
-    create_drive_direct(speed, speed)
-    while (get_create_lcliff_amt() > 2000):
-        pass
-    create_drive_direct(0, speed)
-    while (get_create_rcliff_amt() > 2000):
-        pass
+    lspeed = speed
+    rspeed = speed
+    create_drive_direct(lspeed, rspeed)
+    while (lspeed or rspeed):
+
+        if get_create_lcliff_amt() < 2000:
+            lspeed = 0
+            create_drive_direct(lspeed, rspeed)
+        if get_create_rcliff_amt() < 2000:
+            rspeed = 0
+            create_drive_direct(lspeed, rspeed)
+
     create_stop()
 
 
@@ -303,9 +309,9 @@ def resetChain():
             freeze(c.cogMotor)
             print'stopping'
             break'''
-if c.IS_PRIME:
+if c.IS_ORANGE_BOT:
     INCHES_TO_TICKS = 600
-else:
+elif c.IS_BLUE_BOT:
     INCHES_TO_TICKS = 560
 
 def moveCog_position (inches,speed):

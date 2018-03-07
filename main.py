@@ -14,7 +14,6 @@ def main():
     act.liftRing()
     act.raiseRing2()
     act.dropRing()
-    u.DEBUG()
     act.slideTram()
     act.approachCenter()
     u.DEBUG()

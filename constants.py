@@ -5,9 +5,10 @@ FRONT_BUMPED = 0
 ALLOW_BUTTON_WAIT = True
 START_TIME = 0
 
-CLONE_SWITCH = 0
-IS_CLONE = digital(CLONE_SWITCH)
-IS_PRIME = not IS_CLONE
+
+
+
+
 
 #Motor Ports
 cogMotor = 3
@@ -30,9 +31,17 @@ servoClaw = 2
 servoIgus = 3
 
 # Digital ports
+ROBOT_ID_YELLOW = 0
+ROBOT_ID_BLUE = 1
 IGUS_BUTTON = 9
 
-if IS_PRIME:
+IS_YELLOW_BOT = digital(ROBOT_ID_YELLOW)
+IS_BLUE_BOT = digital(ROBOT_ID_BLUE)
+IS_ORANGE_BOT = not IS_BLUE_BOT and not IS_YELLOW_BOT
+
+
+
+if IS_ORANGE_BOT:
 
     #Arm Servo Values
     armStartbox = 400  # 520 #2017
@@ -57,7 +66,7 @@ if IS_PRIME:
     cogStart = 1650 #was 1550
     cogGrab = 1800 #was 1780
 
-else:
+elif IS_BLUE_BOT:
     #Arm Servo Values
     armStartbox = 250  # 2017
     armBotguy = 470

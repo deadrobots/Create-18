@@ -16,12 +16,12 @@ def init():
         exit(0)
     print("Create connected...")
     create_full()
-    if c.IS_CLONE:
-        print("I AM CLONE")
-    elif c.IS_PRIME:
-        print("I AM PRIME")
+    if c.IS_ORANGE_BOT:
+        print("I AM ORANGE")
+    elif c.IS_BLUE_BOT:
+        print("I AM BLUE")
     else:
-        print("I DON'T KNOW WHAT I AM")
+        print("I AM YELLOW")
     selfTest()
     print("Press right button to continue")
     wait_for_button()
@@ -57,45 +57,44 @@ def selfTest():
 def turnToRing():
     print ('Turn to ring')
     set_servo_position(c.servoArm,c.armUp)
-    msleep(1000)
-    if c.IS_PRIME:
+    msleep(500)
+    if c.IS_ORANGE_BOT:
         pass
-    else:
+    elif c.IS_BLUE_BOT:
         drive_timed(-100, -100, 250)
         drive_timed(100, 0, 1200)
     drive_timed(100, 100, 1700) #squares up to west wall
-    if c.IS_PRIME:
+    if c.IS_ORANGE_BOT:
         drive_timed(-100, -85, 1300)
-    else:
+    elif c.IS_BLUE_BOT:
         drive_timed(-100, -95, 1500)
     drive_timed(-180, 180, 1000)
     drive_timed(100, 100, 1000) #1200
     set_servo_position(c.servoIgus, c.cogGrab)
-    if c.IS_PRIME:
+    if c.IS_ORANGE_BOT:
         moveCog_position(4, 95)
-    else:
+    elif c.IS_BLUE_BOT:
         moveCog_position(2.8, 95)
-    msleep(1000)
     driveTilBlackLCliff(100)
-    if c.IS_PRIME:
-        drive_timed(-50, -50, 900)
-    else:
+    if c.IS_ORANGE_BOT:
+        drive_timed(-30, -60, 900)
+    elif c.IS_BLUE_BOT:
         drive_timed(-50, -50, 500)
 
 
 def liftRing():
-    if c.IS_PRIME:
+    if c.IS_ORANGE_BOT:
         moveServo(c.servoIgus, c.cogStart - 250, 5)
         moveCog_position(6, 100)
         moveServo(c.servoIgus, c.cogStart - 350, 5)
-    else:
+    elif c.IS_BLUE_BOT:
         moveServo(c.servoIgus, c.cogStart - 450, 5)
         moveCog_position(5.75, 100)
         moveServo(c.servoIgus, c.cogStart - 600, 5)
         timedLineFollowLeftFront(1)
 
 def raiseRing2():
-    # Prime
+    # orange
     timedLineFollowLeftFront(1.9)
     moveServo(c.servoIgus, 1090, 5)
     moveCog_position(2.5, 100)
@@ -105,18 +104,18 @@ def raiseRing2():
     lineFollowLeftFrontTilBlack()
     lineFollowLeftFrontTilWhite()
     moveServo(c.servoIgus, 920, 5)
-    moveCog_position(2, 100)
-    timedLineFollowLeftFront(2)
+    moveCog_position(1.5, 100)
+    timedLineFollowLeftFront(1.8)
 
 def raiseRing():
-    if c.IS_PRIME:
+    if c.IS_ORANGE_BOT:
         motor(c.cogMotor, 100)
         moveServo(c.servoIgus, c.cogStart - 620, 5)
         timedLineFollowLeftFront(2.2) #was 1.6
         motor(c.cogMotor, 0)
         moveServo(c.servoIgus, c.cogStart - 640, 5)
         timedLineFollowLeftFront(1) #was 1.6
-    else:
+    elif c.IS_BLUE_BOT:
         motor(c.cogMotor, 100)
         moveServo(c.servoIgus, c.cogStart - 610, 5)
         timedLineFollowLeftFront(2.2)  # was 1.6
@@ -124,17 +123,17 @@ def raiseRing():
         moveServo(c.servoIgus, c.cogStart - 650, 5)
         timedLineFollowLeftFront(1)  # was 1.6
     DEBUG()
-    if c.IS_PRIME:
+    if c.IS_ORANGE_BOT:
         moveServo(c.servoIgus, 770,5)
-    else:
+    elif c.IS_BLUE_BOT:
         moveServo(c.servoIgus, c.cogRingDrop-150, 5)
         motor(c.cogMotor, 100)
     # timedLineFollowLeftFront(.75)
     lineFollowLeftFrontTilBlack()
     motor(c.cogMotor, 0)
-    if c.IS_PRIME:
+    if c.IS_ORANGE_BOT:
         moveCog_position(5, 50)
-    else:
+    elif c.IS_BLUE_BOT:
         #moveCog_position(5.5, 50)
         pass
     lineFollowLeftFrontTilWhite()
@@ -152,6 +151,8 @@ def slideTram():
     #Depends on position after drop, so may need to be changed as drop method changes
     moveServo(c.servoClaw, c.clawClosed, 20)
     moveServo(c.servoArm, c.armVeryHigh, 10)
+    if c.IS_ORANGE_BOT:
+        drive_timed(100,100,1200)
     rotate_degrees(-165, 100)
     moveServo(c.servoArm, c.armHigh, 5)
     drive_timed(100, 100, 200)
@@ -160,6 +161,7 @@ def slideTram():
     rotate_degrees(-25, 100)
     drive_timed(100, 100, 2000) #shorter
     rotate_degrees(-24, 100)
+    DEBUG()
     driveTilBlackLCliffAndSquareUp(-100)
     driveTilWhiteLCliff(-100)
     drive_timed(100, 100, 1200)
