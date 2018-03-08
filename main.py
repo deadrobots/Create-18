@@ -17,13 +17,6 @@ def main():
     act.slideTram()
     act.approachCenter()
     u.DEBUG()
-    #act.getOutOfSB()
-    #act.raiseCog()
-    #act.startDriving()
-    #act.goToCenter()
-    act.driveBotGuy()
-
-
     create_disconnect()
 if __name__ == "__main__":
     sys.stdout = os.fdopen(sys.stdout.fileno(), "w", 0)

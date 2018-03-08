@@ -149,6 +149,7 @@ def dropRing():
 
 def slideTram():
     #Depends on position after drop, so may need to be changed as drop method changes
+    #tram keeps getting stuck on the claw pegs - need to work on sliding it without getting stuck
     moveServo(c.servoClaw, c.clawClosed, 20)
     moveServo(c.servoArm, c.armVeryHigh, 10)
     if c.IS_ORANGE_BOT:
@@ -158,13 +159,13 @@ def slideTram():
     drive_timed(100, 100, 200)
     rotate_degrees(-75, 100)
     drive_timed(100, 100, 1250) #shorter drive
-    rotate_degrees(-25, 100)
+    rotate_degrees(-25, 100) #tram gets stuck during this rotate
     drive_timed(100, 100, 2000) #shorter
     rotate_degrees(-24, 100)
-    DEBUG()
     driveTilBlackLCliffAndSquareUp(-100)
     driveTilWhiteLCliff(-100)
     drive_timed(100, 100, 1200)
+    DEBUG()
 
 def approachCenter():
     drive_timed(-150, 0, 2000)
@@ -192,10 +193,10 @@ def goToCenter():
     set_servo_position(c.servoClaw, c.clawOpen)
     msleep(600)
     drive_timed(150, -250, 1500)
-    drive_timed(75,75,4000)
+    drive_timed(75, 75, 4000)
     drive_timed(75, -175, 400)
     drive_timed(-75, -75, 500)
-    drive_timed(75,75,2500)
+    drive_timed(75, 75, 2500)
     set_servo_position(c.servoClaw, c.clawClosed)
     msleep(500)
     set_servo_position(c.servoClaw, c.clawOpen)
@@ -209,43 +210,5 @@ def goToCenter():
     moveServo(c.servoArm, c.armUp, 10)
     msleep(2000)
     moveServo(c.servoArm, 1420, 10)
-    drive_timed(100,100,2000)
+    drive_timed(100, 100, 2000)
     DEBUG()
-
-def getOutOfSB():
-    #Gets Create out of start box and ready to line follow
-    print "Push left button to end"
-    enable_servos()
-    set_servo_position(c.servoArm, c.cogStart)
-    motor(c.cogMotor, 50)
-    msleep(2500)
-    motor(c.cogMotor, 0)
-    #moveServo(c.servoArm, c.armup, 20)
-    driveTilBlackRCliff(-250)
-    turnTilBlackLCliff(150, 0)
-    drive_timed(0, -150, 370)
-    msleep(500)
-    '''motor(c.cogMotor, -50)
-    msleep(1050)
-    motor(c.cogMotor, 0)'''
-    #drive_timed(-250, -250, 1000)
-
-def raiseCog():
-    moveServo(c.servoArm, 1300, 10)
-    motor(c.cogMotor, 50)
-    msleep(500)
-    #timedLineFollow(1)
-
-def startDriving():
-    drive_timed(100, 100, 1000)
-    moveServo(c.servoArm, 1100, 10)
-    rotate_degrees(-20, 100)
-    drive_timed(-100, -100, 1000)
-    driveAndLift(750)
-    msleep(1000)
-    lineFollowLeftAndLift()
-    DEBUG()
-
-
-
-
