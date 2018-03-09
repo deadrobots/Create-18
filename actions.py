@@ -146,6 +146,7 @@ def dropRing():
     drive_timed(-50, 50, 1200)
     moveServo(c.servoIgus, c.cogStart-300, 3)
     resetChain()
+    moveServo(c.servoIgus, c.cogRingDrop, 5)
 
 def slideTram():
     #Depends on position after drop, so may need to be changed as drop method changes
@@ -163,15 +164,37 @@ def slideTram():
     drive_timed(100, 100, 2000) #shorter
     rotate_degrees(-24, 100)
     driveTilBlackLCliffAndSquareUp(-100)
-    driveTilWhiteLCliff(-100)
-    drive_timed(100, 100, 1200)
-    DEBUG()
+    drive_timed(100, 100, 1000)
 
 def approachCenter():
-    drive_timed(-150, 0, 2000)
+    drive_timed(-90, 90, 2000)
+    drive_timed(100,100,1900)
+    driveTilBlackLCliff(100)
+    drive_timed(-100,-100,4650)
+    drive_timed(90, -90, 2000)
+    drive_timed(100, 100, 3200)
 
 
-
+def getFrisbee():
+    #Goal is to grab date tree frisbees and make a date sanwich
+    #Then back up and deposit your fresh date sandwich into the tram bin
+    moveServo(c.servoArm, c.armVeryHigh, 15)
+    moveServo(c.servoClaw, c.clawOpen, 15)
+    drive_timed(-150, -150, 1600)
+    rotate_degrees(22, 150)
+    moveServo(c.servoArm, c.armSandwich, 15)
+    wait_for_button()
+    moveServo(c.servoClaw, c.clawMid, 15)
+    moveServo(c.servoArm, c.armUp, 5)
+    wait_for_button()
+    drive_timed(-100,-100, 1000)
+    rotate_degrees(7, 50)
+    moveServo(c.servoArm, c.armHigh, 5)
+    drive_timed(50, 50, 2000)
+    moveServo(c.servoClaw, c.clawOpen, 5)
+    drive_timed(-50, -50, 2000)
+    moveServo(c.servoClaw, c.clawClosed, 5)
+    DEBUG()
 
 #test functions
 #not used, placed out of the way

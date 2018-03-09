@@ -47,6 +47,7 @@ if IS_ORANGE_BOT:
     armStartbox = 400  # 520 #2017
     armBotguy = 570
     armLow = 650
+    armSandwich = 720
     armOut = 800
     armHorizontal = 900
     armUp = 1200
@@ -55,6 +56,7 @@ if IS_ORANGE_BOT:
 
     #Claw Servo Values
     clawClosed = 0
+    clawMid = 100
     clawTram = 600 #Position to move tram
     clawOpen = 1065
     clawStart = 1730 #All the way back

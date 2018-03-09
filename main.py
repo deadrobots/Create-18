@@ -16,6 +16,7 @@ def main():
     act.dropRing()
     act.slideTram()
     act.approachCenter()
+    act.getFrisbee()
     u.DEBUG()
     create_disconnect()
 if __name__ == "__main__":
