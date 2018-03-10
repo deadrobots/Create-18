@@ -26,7 +26,7 @@ ROBOT_NAME = "Create-17"
 #servoCog = 1
 
 #Servo ports for red Create
-servoArm = 0
+servoArm = 1
 servoClaw = 2
 servoIgus = 3
 
@@ -48,6 +48,7 @@ if IS_ORANGE_BOT:
     armBotguy = 570
     armLow = 650
     armSandwich = 815
+    armSlightlyUp = 830
     armOut = 800
     armHorizontal = 900
     armUp = 1200
@@ -56,6 +57,7 @@ if IS_ORANGE_BOT:
 
     #Claw Servo Values
     clawClosed = 0
+    clawFrisbeeTight = 95
     clawMid = 200
     clawTram = 600 #Position to move tram
     clawOpen = 1065

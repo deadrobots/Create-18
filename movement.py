@@ -150,9 +150,21 @@ def driveTilBlackLCliff(speed):
         pass
     create_stop()
 
+def driveTilBlackLFCliff(speed):
+    create_drive_direct(speed, speed)
+    while (get_create_lfcliff_amt() > 2000):
+        pass
+    create_stop()
+
 def driveTilWhiteLCliff(speed):
     create_drive_direct(speed, speed)
     while (get_create_lcliff_amt() < 2000):
+        pass
+    create_stop()
+
+def driveTilWhiteLFCliff(speed):
+    create_drive_direct(speed, speed)
+    while (get_create_lfcliff_amt() < 2000):
         pass
     create_stop()
 
