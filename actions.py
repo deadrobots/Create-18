@@ -72,7 +72,7 @@ def turnToRing():
     drive_timed(100, 100, 1000) #1200
     set_servo_position(c.servoIgus, c.cogGrab)
     if c.IS_ORANGE_BOT:
-        moveCog_position(4, 95)
+        moveCog_position(3.5, 95)
     elif c.IS_BLUE_BOT:
         moveCog_position(2.8, 95)
     driveTilBlackLCliff(100)
@@ -142,7 +142,7 @@ def raiseRing():
 def dropRing():
     moveCog_position(-5, 100)
     moveServo(c.servoIgus, c.cogRingDrop, 5)
-    moveCog_position(-2, 100)
+    moveCog_position(-1, 100)
     drive_timed(-50, 50, 1200)
     moveServo(c.servoIgus, c.cogStart-300, 3)
     resetChain()
@@ -159,7 +159,7 @@ def slideTram():
     moveServo(c.servoArm, c.armHigh, 5)
     drive_timed(100, 100, 200)
     rotate_degrees(-75, 100)
-    drive_timed(100, 100, 1250) #shorter drive
+    drive_timed(100, 100, 1450) #shorter drive
     rotate_degrees(-25, 100) #tram gets stuck during this rotate
     drive_timed(100, 100, 2000) #shorter
     rotate_degrees(-24, 100)
@@ -167,12 +167,13 @@ def slideTram():
     drive_timed(100, 100, 1000)
 
 def approachCenter():
-    drive_timed(-90, 90, 2000)
+    rotate_degrees(90, 100)
     drive_timed(100,100,1900)
-    driveTilBlackLCliff(100)
+    driveTilBlackLCliffAndSquareUp(100)
+    wait_for_button()
     drive_timed(-100,-100,4650)
     drive_timed(90, -90, 2000)
-    drive_timed(100, 100, 3200)
+    drive_timed(100, 100, 3500)
 
 
 def getFrisbee():
@@ -181,12 +182,14 @@ def getFrisbee():
     moveServo(c.servoArm, c.armVeryHigh, 15)
     moveServo(c.servoClaw, c.clawOpen, 15)
     drive_timed(-150, -150, 1600)
-    rotate_degrees(22, 150)
+    msleep(1000)
+    rotate_degrees(-25, 150)
     moveServo(c.servoArm, c.armSandwich, 15)
-    wait_for_button()
+    msleep(1000)
     moveServo(c.servoClaw, c.clawMid, 15)
-    moveServo(c.servoArm, c.armUp, 5)
-    wait_for_button()
+    msleep(1000)
+    moveServo(c.servoArm, c.armUp, 2)
+    DEBUG()
     drive_timed(-100,-100, 1000)
     rotate_degrees(7, 50)
     moveServo(c.servoArm, c.armHigh, 5)
