@@ -91,18 +91,6 @@ def rotate_degrees(degrees, speed):
         pass
     stop()
 
-    # diameter_inch = 9
-    # diameter_mil = diameter_inch * INCH_TO_MIL
-    # if degrees < 0:
-    #     speed = -speed
-    #     degrees = -degrees
-    # angle = abs(degrees / 360.0)
-    # circ = pi * diameter_mil
-    # drive_mil = angle * circ
-    # time = drive_mil / speed
-    # rotate(speed, time)
-
-
 def drive_accel(speed, time):
     for sub_speed in range(0, speed+1, 100):
         create_drive_direct(-sub_speed, -sub_speed)
@@ -301,20 +289,7 @@ def resetChain():
             print('stopping')
             break
     freeze(c.cogMotor)
-    # resets based on motor forced stopping
-    '''previousCount= 0
-    clear_motor_position_counter(c.cogMotor)
 
-    while (seconds() - startTime < 5):
-        msleep(50)
-        currentCount=get_motor_position_counter(c.cogMotor)
-        print currentCount
-        if previousCount-currentCount>=20:
-            previousCount=currentCount
-        else:
-            freeze(c.cogMotor)
-            print'stopping'
-            break'''
 if c.IS_ORANGE_BOT:
     INCHES_TO_TICKS = 600
 elif c.IS_BLUE_BOT:

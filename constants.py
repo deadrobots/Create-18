@@ -5,25 +5,14 @@ FRONT_BUMPED = 0
 ALLOW_BUTTON_WAIT = True
 START_TIME = 0
 
-
-
-
-
-
 #Motor Ports
 cogMotor = 3
 
 # Drive Info
-TURN_TIME = 0  # -20  # 0, 15, 40
-
+TURN_TIME = 0
 
 LOGFILE = "" # Leave empty
 ROBOT_NAME = "Create-17"
-
-
-#Servo ports for blue Create
-#servoClaw = 3
-#servoCog = 1
 
 #Servo ports for red Create
 servoArm = 0
@@ -44,7 +33,7 @@ IS_ORANGE_BOT = not IS_BLUE_BOT and not IS_YELLOW_BOT
 if IS_ORANGE_BOT:
 
     #Arm Servo Values
-    armStartbox = 400  # 520 #2017
+    armStartbox = 400
     armBotguy = 570
     armLow = 650
     armSandwich = 815
@@ -67,8 +56,8 @@ if IS_ORANGE_BOT:
     cogRingDrop = 1100
     cogStartBox = 1200
     cogPegTwo = 1350
-    cogStart = 1650 #was 1550
-    cogGrab = 1800 #was 1780
+    cogStart = 1650
+    cogGrab = 1800
 
 elif IS_BLUE_BOT:
     #Servo Ports
@@ -78,7 +67,7 @@ elif IS_BLUE_BOT:
     servoIgus = 3
 
     #Arm Servo Values
-    armStartbox = 250  # 2017
+    armStartbox = 250
     armBotguy = 420
     armLow = 500
     armOut = 650
@@ -94,8 +83,8 @@ elif IS_BLUE_BOT:
     clawStart = 2047 #All the way back
 
     #Cog Servo Values
-    cogRingDrop = 225  # was 250
+    cogRingDrop = 225
     cogStartBox = 350
-    cogPegTwo = 500  # was 600
-    cogStart = 800 #was 900
+    cogPegTwo = 500
+    cogStart = 800
     cogGrab = 980

@@ -71,7 +71,7 @@ def turnToRing():
     elif c.IS_BLUE_BOT:
         drive_timed(-100, -95, 1500)
     drive_timed(-180, 180, 1000)
-    drive_timed(100, 100, 1000) #1200
+    drive_timed(100, 100, 1000)
     set_servo_position(c.servoIgus, c.cogGrab)
     if c.IS_ORANGE_BOT:
         moveCog_position(3.5, 95)
@@ -113,30 +113,28 @@ def raiseRing():
     if c.IS_ORANGE_BOT:
         motor(c.cogMotor, 100)
         moveServo(c.servoIgus, c.cogStart - 620, 5)
-        timedLineFollowLeftFront(2.2) #was 1.6
+        timedLineFollowLeftFront(2.2)
         motor(c.cogMotor, 0)
         moveServo(c.servoIgus, c.cogStart - 640, 5)
-        timedLineFollowLeftFront(1) #was 1.6
+        timedLineFollowLeftFront(1)
     elif c.IS_BLUE_BOT:
         motor(c.cogMotor, 100)
         moveServo(c.servoIgus, c.cogStart - 610, 5)
-        timedLineFollowLeftFront(2.2)  # was 1.6
+        timedLineFollowLeftFront(2.2)
         motor(c.cogMotor, 0)
         moveServo(c.servoIgus, c.cogStart - 650, 5)
-        timedLineFollowLeftFront(1)  # was 1.6
+        timedLineFollowLeftFront(1)
     DEBUG()
     if c.IS_ORANGE_BOT:
         moveServo(c.servoIgus, 770,5)
     elif c.IS_BLUE_BOT:
         moveServo(c.servoIgus, c.cogRingDrop-150, 5)
         motor(c.cogMotor, 100)
-    # timedLineFollowLeftFront(.75)
     lineFollowLeftFrontTilBlack()
     motor(c.cogMotor, 0)
     if c.IS_ORANGE_BOT:
         moveCog_position(5, 50)
     elif c.IS_BLUE_BOT:
-        #moveCog_position(5.5, 50)
         pass
     lineFollowLeftFrontTilWhite()
     timedLineFollowLeftFront(.5)
@@ -164,9 +162,6 @@ def slideTram():
     rotate_degrees(-75, 100)
     drive_timed(100, 100, 1600) #shorter drive
     rotate_degrees(-25, 100) #tram gets stuck during this rotate
-    #drive_timed(100, 100, 1900) #shorter
-    #wait_for_button()
-    #rotate_degrees(-24, 100)
     driveTilBlackLCliffAndSquareUp(-100)
     drive_timed(100, 100, 1100)
 
@@ -187,11 +182,7 @@ def getFrisbee():
     #Then back up and deposit your fresh date sandwich into the tram bin
     driveTilBlackLFCliff(100)
     driveTilWhiteLFCliff(100)
-    # moveServo(c.servoArm, c.armVeryHigh, 15)
     moveServo(c.servoClaw, c.clawOpen, 15)
-    # drive_timed(-150, -150, 1600)
-    # msleep(1000)
-    # rotate_degrees(-25, 150)
     moveServo(c.servoArm, c.armSandwich, 15)
     driveTilBlackLFCliff(-100)
     driveTilWhiteLFCliff(-100)
@@ -205,7 +196,7 @@ def getFrisbee():
     rotate_degrees(53, 50)
     moveServo(c.servoArm, c.armHigh, 7)
     #This drive isn't straight on
-    drive_timed(100, 100, 2700)#50,50,5800
+    drive_timed(100, 100, 2700)
     wait_for_button()
     moveServo(c.servoClaw, c.clawOpen, 5)
     DEBUG()
@@ -222,11 +213,6 @@ def goToCenter():
     timedLineFollow(.85)
     set_servo_position(c.servoClaw, c.clawClosed)
     wait_for_button()
-    #drive_timed(150, -250, 1000)
-    #msleep(2000)
-    #drive_timed(0, 600, 300)
-    #msleep(3000)
-    #drive_timed(0, -600, 300)
     drive_timed(150, -250, 900)
     moveServo(c.servoArm , c.armHorizontal, 5)
     drive_timed(75,75,500)
