@@ -26,7 +26,7 @@ ROBOT_NAME = "Create-17"
 #servoCog = 1
 
 #Servo ports for red Create
-servoArm = 1
+servoArm = 0
 servoClaw = 2
 servoIgus = 3
 
@@ -53,7 +53,7 @@ if IS_ORANGE_BOT:
     armHorizontal = 900
     armUp = 1200
     armHigh = 1500
-    armVeryHigh = 1700
+    armVeryHigh = 1650
 
     #Claw Servo Values
     clawClosed = 0
@@ -71,15 +71,21 @@ if IS_ORANGE_BOT:
     cogGrab = 1800 #was 1780
 
 elif IS_BLUE_BOT:
+    #Servo Ports
+    servoArmMain = 0
+    servoArmAssist = 1
+    servoClaw = 2
+    servoIgus = 3
+
     #Arm Servo Values
     armStartbox = 250  # 2017
-    armBotguy = 470
-    armLow = 550
-    armOut = 700
-    armHorizontal = 800
-    armUp = 1100
-    armHigh = 1400
-    armVeryHigh = 1700
+    armBotguy = 420
+    armLow = 500
+    armOut = 650
+    armHorizontal = 750
+    armUp = 1050
+    armHigh = 1350
+    armVeryHigh = 1550
 
     #Claw Servo Values
     clawClosed = 230

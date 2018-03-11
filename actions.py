@@ -30,16 +30,17 @@ def init():
 
 def selfTest():
     # raise arm
-    enable_servo(c.servoArm)
-    moveServo(c.servoArm, c.armHorizontal, 10)
+    enable_servo(c.servoArmMain)
+    enable_servo(c.servoArmAssist)
+    moveArm(c.servoArmMain, c.servoArmAssist, c.armHorizontal, 10)
     # open/close claw
     enable_servo(c.servoClaw)
     moveServo(c.servoClaw, c.clawClosed, 15)
     moveServo(c.servoClaw, c.clawStart, 15)
     # test drive
-    drive_timed(-100, -100, 750)
+    drive_timed(100, 100, 2500)
     msleep(250)
-    drive_timed(100, 100, 750)
+    drive_timed(-100, -100, 2500)
     msleep(250)
     # lower ramp
     enable_servo(c.servoIgus)
@@ -51,7 +52,8 @@ def selfTest():
     moveServo(c.servoIgus, c.cogStartBox, 10)
     msleep(250)
     # lower the arm
-    moveServo(c.servoArm, c.armStartbox, 10)
+    moveArm(c.servoArmMain, c.servoArmAssist, c.armStartbox, 10)
+
 
 
 def turnToRing():
@@ -193,17 +195,17 @@ def getFrisbee():
     moveServo(c.servoArm, c.armSandwich, 15)
     driveTilBlackLFCliff(-100)
     driveTilWhiteLFCliff(-100)
-    wait_for_button()
+    drive_timed(100,100, 150)
     moveServo(c.servoClaw, c.clawMid, 15)
     msleep(1000)
     moveServo(c.servoArm, c.armSlightlyUp, 2)
     moveServo(c.servoClaw, c.clawFrisbeeTight,2)
     moveServo(c.servoArm, c.armUp, 2)
-    wait_for_button()
     driveTilBlackLCliffAndSquareUp(100)
     rotate_degrees(53, 50)
     moveServo(c.servoArm, c.armHigh, 7)
-    drive_timed(50, 50, 5800)
+    #This drive isn't straight on
+    drive_timed(100, 100, 2700)#50,50,5800
     wait_for_button()
     moveServo(c.servoClaw, c.clawOpen, 5)
     DEBUG()
