@@ -58,30 +58,26 @@ def selfTest():
 
 def turnToRing():
     print ('Turn to ring')
-    set_servo_position(c.servoArm,c.armUp)
+    moveArm(c.servoArmMain, c.servoArmAssist, c.armUp, 10)
+    #set_servo_position(c.servoArm,c.armUp)
     msleep(500)
-    if c.IS_ORANGE_BOT:
-        pass
-    elif c.IS_BLUE_BOT:
-        drive_timed(-100, -100, 250)
-        drive_timed(100, 0, 1200)
-    drive_timed(100, 100, 1700) #squares up to west wall
+    drive_timed(100, 100, 2000) #squares up to west wall
     if c.IS_ORANGE_BOT:
         drive_timed(-100, -85, 1300)
     elif c.IS_BLUE_BOT:
-        drive_timed(-100, -95, 1500)
+        drive_timed(-100, -95, 1100)
     drive_timed(-180, 180, 1000)
     drive_timed(100, 100, 1000)
-    set_servo_position(c.servoIgus, c.cogGrab)
+    moveServo(c.servoIgus, c.cogGrab, 10)
     if c.IS_ORANGE_BOT:
         moveCog_position(3.5, 95)
     elif c.IS_BLUE_BOT:
-        moveCog_position(2.8, 95)
+        moveCog_position(3.0, 95)
     driveTilBlackLCliff(100)
     if c.IS_ORANGE_BOT:
         drive_timed(-30, -60, 900)
     elif c.IS_BLUE_BOT:
-        drive_timed(-50, -50, 500)
+        drive_timed(-30, -50, 775)
 
 
 def liftRing():
@@ -91,22 +87,27 @@ def liftRing():
         moveServo(c.servoIgus, c.cogStart - 350, 5)
     elif c.IS_BLUE_BOT:
         moveServo(c.servoIgus, c.cogStart - 450, 5)
-        moveCog_position(5.75, 100)
-        moveServo(c.servoIgus, c.cogStart - 600, 5)
-        timedLineFollowLeftFront(1)
+        moveCog_position(5.72, 100)
+        moveServo(c.servoIgus, c.cogStart - 480, 5)
 
 def raiseRing2():
     # orange
     timedLineFollowLeftFront(1.9)
-    moveServo(c.servoIgus, 1090, 5)
+    moveServo(c.servoIgus, c.cogLift, 5)
     moveCog_position(2.5, 100)
     timedLineFollowLeftFront(1.9)
-    moveServo(c.servoIgus, 980, 5)
-    moveCog_position(4, 100)
+    moveServo(c.servoIgus, c.evenMoreCogLift, 5)
+    if c.IS_BLUE_BOT:
+        moveCog_position(5, 100)
+    else:
+        moveCog_position(4, 100)
     lineFollowLeftFrontTilBlack()
     lineFollowLeftFrontTilWhite()
-    moveServo(c.servoIgus, 920, 5)
-    moveCog_position(1.5, 100)
+    moveServo(c.servoIgus, c.cogServoVeryHigh, 5)
+    if c.IS_BLUE_BOT:
+        moveCog_position(1.8, 100)
+    else:
+        moveCog_position(1.5, 100)
     timedLineFollowLeftFront(1.8)
 
 def raiseRing():
@@ -123,13 +124,13 @@ def raiseRing():
         timedLineFollowLeftFront(2.2)
         motor(c.cogMotor, 0)
         moveServo(c.servoIgus, c.cogStart - 650, 5)
-        timedLineFollowLeftFront(1)
     DEBUG()
     if c.IS_ORANGE_BOT:
-        moveServo(c.servoIgus, 770,5)
+        moveServo(c.servoIgus, c.cogLiftContinued,5)
     elif c.IS_BLUE_BOT:
-        moveServo(c.servoIgus, c.cogRingDrop-150, 5)
-        motor(c.cogMotor, 100)
+        moveServo(c.servoIgus, c.cogLiftContinued, 5)
+        DEBUG()
+        #motor(c.cogMotor, 100)
     lineFollowLeftFrontTilBlack()
     motor(c.cogMotor, 0)
     if c.IS_ORANGE_BOT:
@@ -140,12 +141,22 @@ def raiseRing():
     timedLineFollowLeftFront(.5)
 
 def dropRing():
-    moveCog_position(-5, 100)
+    if c.IS_BLUE_BOT:
+        moveCog_position(-5, 100)
+    else:
+        moveCog_position(-5, 100)
+    msleep(750)
     moveServo(c.servoIgus, c.cogRingDrop, 5)
     moveCog_position(-1, 100)
-    msleep(500) #do not remove: keep so ring frisbee stops swinging
+    msleep(1500)
     drive_timed(-50, 50, 1200)
-    moveServo(c.servoIgus, c.cogStart-300, 3)
+    if c.IS_ORANGE_BOT:
+        moveServo(c.servoIgus, c.cogStart-300, 3)
+    elif c.IS_BLUE_BOT:
+        moveServo(c.servoIgus, c.cogStart - 375, 3)
+    else:
+        print("PUT SOMETHING HERE!")
+        exit(0)
     resetChain()
     moveServo(c.servoIgus, c.cogRingDrop, 5)
 
@@ -153,17 +164,20 @@ def slideTram():
     #Depends on position after drop, so may need to be changed as drop method changes
     #tram keeps getting stuck on the claw pegs - need to work on sliding it without getting stuck
     moveServo(c.servoClaw, c.clawClosed, 20)
-    moveServo(c.servoArm, c.armVeryHigh, 10)
+    moveArm(c.servoArm, c.servoArmAssist, c.armVeryHigh, 10)
     if c.IS_ORANGE_BOT:
         drive_timed(100,100,1300)
+    else:
+        drive_timed(100, 100, 1300)
     rotate_degrees(-165, 100)
-    moveServo(c.servoArm, c.armHigh, 5)
+    moveArm(c.servoArm, c.servoArmAssist, c.armHigh, 5)
     drive_timed(100, 100, 200)
     rotate_degrees(-75, 100)
     drive_timed(100, 100, 1600) #shorter drive
     rotate_degrees(-25, 100) #tram gets stuck during this rotate
     driveTilBlackLCliffAndSquareUp(-100)
     drive_timed(100, 100, 1100)
+    DEBUG()
 
 def approachCenter():
     rotate_degrees(90, 100)

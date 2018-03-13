@@ -58,6 +58,10 @@ if IS_ORANGE_BOT:
     cogPegTwo = 1350
     cogStart = 1650
     cogGrab = 1800
+    cogLift = 1090
+    cogLiftContinued = 770
+    evenMoreCogLift = 980
+    cogServoVeryHigh = 920
 
 elif IS_BLUE_BOT:
     #Servo Ports
@@ -83,8 +87,12 @@ elif IS_BLUE_BOT:
     clawStart = 2047 #All the way back
 
     #Cog Servo Values
-    cogRingDrop = 225
+    cogRingDrop = 215
     cogStartBox = 350
     cogPegTwo = 500
     cogStart = 800
     cogGrab = 980
+    cogLift = 200
+    cogLiftContinued = 75
+    evenMoreCogLift = 25
+    cogServoVeryHigh = 5
