@@ -14,11 +14,6 @@ TURN_TIME = 0
 LOGFILE = "" # Leave empty
 ROBOT_NAME = "Create-17"
 
-#Servo ports for red Create
-servoArm = 0
-servoClaw = 2
-servoIgus = 3
-
 # Digital ports
 ROBOT_ID_YELLOW = 0
 ROBOT_ID_BLUE = 1
@@ -65,10 +60,10 @@ if IS_ORANGE_BOT:
 
 elif IS_BLUE_BOT:
     #Servo Ports
-    servoArmMain = 0
-    servoArmAssist = 1
-    servoClaw = 2
-    servoIgus = 3
+    servoArmMain = 2
+    servoArmAssist = 3
+    servoClaw = 1
+    servoIgus = 0
 
     #Arm Servo Values
     armStartbox = 250

@@ -33,6 +33,8 @@ def selfTest():
     enable_servo(c.servoArmMain)
     enable_servo(c.servoArmAssist)
     moveArm(c.servoArmMain, c.servoArmAssist, c.armHorizontal, 10)
+    msleep(500)
+    moveArm(c.servoArmMain, c.servoArmAssist, c.armVeryHigh, 10)
     # open/close claw
     enable_servo(c.servoClaw)
     moveServo(c.servoClaw, c.clawClosed, 15)
@@ -98,7 +100,7 @@ def raiseRing2():
     timedLineFollowLeftFront(1.9)
     moveServo(c.servoIgus, c.evenMoreCogLift, 5)
     if c.IS_BLUE_BOT:
-        moveCog_position(5, 100)
+        moveCog_position(5, 70)
     else:
         moveCog_position(4, 100)
     lineFollowLeftFrontTilBlack()
@@ -124,12 +126,10 @@ def raiseRing():
         timedLineFollowLeftFront(2.2)
         motor(c.cogMotor, 0)
         moveServo(c.servoIgus, c.cogStart - 650, 5)
-    DEBUG()
     if c.IS_ORANGE_BOT:
         moveServo(c.servoIgus, c.cogLiftContinued,5)
     elif c.IS_BLUE_BOT:
         moveServo(c.servoIgus, c.cogLiftContinued, 5)
-        DEBUG()
         #motor(c.cogMotor, 100)
     lineFollowLeftFrontTilBlack()
     motor(c.cogMotor, 0)
@@ -164,20 +164,19 @@ def slideTram():
     #Depends on position after drop, so may need to be changed as drop method changes
     #tram keeps getting stuck on the claw pegs - need to work on sliding it without getting stuck
     moveServo(c.servoClaw, c.clawClosed, 20)
-    moveArm(c.servoArm, c.servoArmAssist, c.armVeryHigh, 10)
+    moveArm(c.servoArmMain, c.servoArmAssist, c.armVeryHigh, 10)
     if c.IS_ORANGE_BOT:
         drive_timed(100,100,1300)
     else:
         drive_timed(100, 100, 1300)
     rotate_degrees(-165, 100)
-    moveArm(c.servoArm, c.servoArmAssist, c.armHigh, 5)
+    moveArm(c.servoArmMain, c.servoArmAssist, c.armHigh, 5)
     drive_timed(100, 100, 200)
     rotate_degrees(-75, 100)
     drive_timed(100, 100, 1600) #shorter drive
     rotate_degrees(-25, 100) #tram gets stuck during this rotate
     driveTilBlackLCliffAndSquareUp(-100)
     drive_timed(100, 100, 1100)
-    DEBUG()
 
 def approachCenter():
     rotate_degrees(90, 100)
@@ -186,7 +185,7 @@ def approachCenter():
     msleep(1000)
     drive_timed(-100,-100, 6350)
     drive_timed(90, -90, 2000)
-    moveServo(c.servoArm, c.armVeryHigh, 5)
+    moveArm(c.servoArmMain, c.servoArmAssist, c.armVeryHigh,5)
     drive_timed(150, 150, 1500)
     drive_timed(50, 50, 2300)
 
@@ -197,18 +196,20 @@ def getFrisbee():
     driveTilBlackLFCliff(100)
     driveTilWhiteLFCliff(100)
     moveServo(c.servoClaw, c.clawOpen, 15)
-    moveServo(c.servoArm, c.armSandwich, 15)
+    moveArm(c.servoArmMain, c.servoArmAssist, c.armSandwich, 15)
     driveTilBlackLFCliff(-100)
     driveTilWhiteLFCliff(-100)
     drive_timed(100,100, 150)
     moveServo(c.servoClaw, c.clawMid, 15)
     msleep(1000)
-    moveServo(c.servoArm, c.armSlightlyUp, 2)
+    DEBUG()
+    #fix code. create calls error
+    moveArm(c.servoArmMain, c.servoArmAssist, c.armSlightlyUp, 2)
     moveServo(c.servoClaw, c.clawFrisbeeTight,2)
-    moveServo(c.servoArm, c.armUp, 2)
+    moveArm(c.servoArmMain, c.servoArmAssist, c.armUp, 2)
     driveTilBlackLCliffAndSquareUp(100)
     rotate_degrees(53, 50)
-    moveServo(c.servoArm, c.armHigh, 7)
+    moveArm(c.servoArmMain,c.servoArmAssist, c.armHigh, 7)
     #This drive isn't straight on
     drive_timed(100, 100, 2700)
     wait_for_button()
@@ -228,7 +229,7 @@ def goToCenter():
     set_servo_position(c.servoClaw, c.clawClosed)
     wait_for_button()
     drive_timed(150, -250, 900)
-    moveServo(c.servoArm , c.armHorizontal, 5)
+    moveArm(c.servoArmMain, c.servoArmAssist, c.armHorizontal, 5)
     drive_timed(75,75,500)
     set_servo_position(c.servoClaw, c.clawOpen)
     msleep(600)
@@ -243,12 +244,12 @@ def goToCenter():
     driveTilBlackRCliff(150)
     turnTilBlackLCliff(100, 0)
     drive_timed(-130, -130, 800)
-    set_servo_position(c.servoArm, c.armHigh)
+    set_servo_position(c.servoArmMain, c.servoArmAssist, c.armHigh)
 
     msleep(500)
     drive_timed(-100, -100, 2000)
-    moveServo(c.servoArm, c.armUp, 10)
+    moveArm(c.servoArmMain, c.servoArmAssist, c.armUp, 10)
     msleep(2000)
-    moveServo(c.servoArm, 1420, 10)
+    moveArm(c.servoArmMain, c.servoArmAssist, 1420, 10)
     drive_timed(100, 100, 2000)
     DEBUG()
