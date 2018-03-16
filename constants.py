@@ -27,6 +27,10 @@ IS_ORANGE_BOT = not IS_BLUE_BOT and not IS_YELLOW_BOT
 
 if IS_ORANGE_BOT:
 
+    servoArmMain = 0
+    servoArmAssist = 2
+    servoClaw = 1
+    servoIgus = 3
     #Arm Servo Values
     armStartbox = 400
     armBotguy = 570
@@ -70,6 +74,7 @@ elif IS_BLUE_BOT:
     armBotguy = 420
     armLow = 500
     armOut = 650
+    armSandwich = 665
     armHorizontal = 750
     armUp = 1050
     armHigh = 1350

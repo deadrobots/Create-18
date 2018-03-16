@@ -1,3 +1,4 @@
+
 from movement import *
 from utils import *
 import constants as c
@@ -161,8 +162,8 @@ def dropRing():
     moveServo(c.servoIgus, c.cogRingDrop, 5)
 
 def slideTram():
-    #Depends on position after drop, so may need to be changed as drop method changes
-    #tram keeps getting stuck on the claw pegs - need to work on sliding it without getting stuck
+    # Depends on position after drop, so may need to be changed as drop method changes
+    # Tram keeps getting stuck on the claw pegs and the connector - need to work on sliding it without getting stuck
     moveServo(c.servoClaw, c.clawClosed, 20)
     moveArm(c.servoArmMain, c.servoArmAssist, c.armVeryHigh, 10)
     if c.IS_ORANGE_BOT:
@@ -173,28 +174,33 @@ def slideTram():
     moveArm(c.servoArmMain, c.servoArmAssist, c.armHigh, 5)
     drive_timed(100, 100, 200)
     rotate_degrees(-75, 100)
-    drive_timed(100, 100, 1600) #shorter drive
-    rotate_degrees(-25, 100) #tram gets stuck during this rotate
+    drive_timed(100, 100, 1600) # shorter drive
+    rotate_degrees(-25, 100) # tram gets stuck during this rotate
     driveTilBlackLCliffAndSquareUp(-100)
     drive_timed(100, 100, 1100)
 
 def approachCenter():
-    rotate_degrees(90, 100)
+    rotate_degrees(92, 100) #Used to be 90
     drive_timed(100,100,1900)
     driveTilBlackLCliffAndSquareUp(100)
     msleep(1000)
-    #drive_timed(-100,-100, 6350)
-    drive_straight(6.35)
-    drive_timed(90, -90, 2000)
-    DEBUG()
+    if c.IS_ORANGE_BOT:#Has worked consistently (Twice)
+        drive_straight(7.2) # Used to be 6.35
+        drive_timed(90, -90, 1950)
+    else:
+        drive_straight(7.5)
+        drive_timed(90, -90, 2200)
+
     moveArm(c.servoArmMain, c.servoArmAssist, c.armVeryHigh,5)
     drive_timed(150, 150, 1500)
-    drive_timed(50, 50, 2300)
-
+    drive_timed(40, 40, 2500) #50,50,2300
+    msleep(1000)
+    drive_timed(-150, -150, 1500)
+    DEBUG()
 
 def getFrisbee():
-    #Goal is to grab date tree frisbees and make a date sanwich
-    #Then back up and deposit your fresh date sandwich into the tram bin
+    # Goal is to grab date tree frisbees and make a date sanwich
+    # Then back up and deposit your fresh date sandwich into the tram bin
     driveTilBlackLFCliff(100)
     driveTilWhiteLFCliff(100)
     moveServo(c.servoClaw, c.clawOpen, 15)
@@ -206,14 +212,14 @@ def getFrisbee():
     moveServo(c.servoClaw, c.clawMid, 15)
     msleep(1000)
     DEBUG()
-    #fix code. create calls error
+    # fix code. create calls error
     moveArm(c.servoArmMain, c.servoArmAssist, c.armSlightlyUp, 2)
     moveServo(c.servoClaw, c.clawFrisbeeTight,2)
     moveArm(c.servoArmMain, c.servoArmAssist, c.armUp, 2)
     driveTilBlackLCliffAndSquareUp(100)
     rotate_degrees(53, 50)
     moveArm(c.servoArmMain,c.servoArmAssist, c.armHigh, 7)
-    #This drive isn't straight on
+    # This drive isn't straight on
     drive_timed(100, 100, 2700)
     wait_for_button()
     moveServo(c.servoClaw, c.clawOpen, 5)
