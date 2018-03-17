@@ -6,6 +6,8 @@ ALLOW_BUTTON_WAIT = True
 START_TIME = 0
 
 #Motor Ports
+leftMotor = 0
+rightMotor = 2
 cogMotor = 3
 
 # Drive Info
@@ -31,18 +33,7 @@ if IS_ORANGE_BOT:
     servoArmAssist = 3
     servoClaw = 1
     servoIgus = 0
-    #Arm Servo Values
-    # armStartbox = 400
-    # armBotguy = 570
-    # armLow = 650
-    # armSandwich = 815
-    # armSlightlyUp = 830
-    # armOut = 800
-    # armHorizontal = 900
-    # armUp = 1200
-    # armHigh = 1500
-    # armVeryHigh = 1650
-    #
+
     #Claw Servo Values
     clawClosed = 0
     clawFrisbeeTight = 95
@@ -62,17 +53,30 @@ if IS_ORANGE_BOT:
     evenMoreCogLift = 980
     cogServoVeryHigh = 920
 
-    armStartbox = 530
+    #Old arm servo values
+    # armStartbox = 530
+    # armBotguy = 500
+    # armLow = 650
+    # armOut = 730
+    # armSandwich = 745
+    # armHorizontal = 830
+    # armUp = 1130
+    # armHigh = 1430
+    # armVeryHigh = 1630
+    # ##
+    # armSlightlyUp = 760
+
+    #current motor arm values
+    armStartbox = -700
     armBotguy = 500
     armLow = 650
     armOut = 730
     armSandwich = 745
     armHorizontal = 830
     armUp = 1130
-    armHigh = 1430
-    armVeryHigh = 1630
-    ##
+    armHigh = -310
     armSlightlyUp = 760
+    armVeryHigh = -150
 
 
 elif IS_BLUE_BOT:

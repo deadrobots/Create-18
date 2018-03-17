@@ -32,11 +32,9 @@ def init():
 
 def selfTest():
     # raise arm
-    enable_servo(c.servoArmMain)
-    enable_servo(c.servoArmAssist)
-    moveArm(c.servoArmMain, c.servoArmAssist, c.armHorizontal, 10)
-    msleep(1000)
-    moveArm(c.servoArmMain, c.servoArmAssist, c.armVeryHigh, 10)
+    testArm()
+    resetArm(2000)
+
     # open/close claw
     enable_servo(c.servoClaw)
     moveServo(c.servoClaw, c.clawClosed, 15)
@@ -56,15 +54,17 @@ def selfTest():
     moveServo(c.servoIgus, c.cogStartBox, 10)
     msleep(250)
     # lower the arm
-    moveArm(c.servoArmMain, c.servoArmAssist, c.armStartbox, 10)
-
+    #moveArm(c.servoArmMain, c.servoArmAssist, c.armStartbox, 10)
+    moveArm(-700, 30)
+    ao()
 
 
 def turnToRing():
     print ('Turn to ring')
-    moveArm(c.servoArmMain, c.servoArmAssist, c.armUp, 10)
+    resetArm(2000)
+    moveServo(c.servoClaw, c.clawClosed, 20)
     #set_servo_position(c.servoArm,c.armUp)
-    msleep(500)
+    #msleep(500)
     drive_timed(100, 100, 2000) #squares up to west wall
     if c.IS_ORANGE_BOT:
         drive_timed(-100, -85, 1300)
@@ -166,15 +166,14 @@ def dropRing():
 def slideTram():
     # Depends on position after drop, so may need to be changed as drop method changes
     # Tram keeps getting stuck on the claw pegs and the connector - need to work on sliding it without getting stuck
-    moveServo(c.servoClaw, c.clawClosed, 20)
-    moveArm(c.servoArmMain, c.servoArmAssist, c.armVeryHigh, 10)
     if c.IS_ORANGE_BOT:
         drive_timed(100,100,1300)
     else:
         drive_timed(100, 100, 1300)
+    moveArm(c.armVeryHigh, 10)
     rotate_degrees(-165, 100)
-    moveArm(c.servoArmMain, c.servoArmAssist, c.armHigh, 5)
-    drive_timed(100, 100, 200)
+    moveArm(c.armHigh, 10)
+    drive_timed(100, 100, 300)
     rotate_degrees(-75, 100)
     drive_timed(100, 100, 1600) # shorter drive
     rotate_degrees(-25, 100) # tram gets stuck during this rotate
@@ -194,11 +193,12 @@ def approachCenter():
         drive_straight(7.5)
         drive_timed(90, -90, 2200)
 
-    moveArm(c.servoArmMain, c.servoArmAssist, c.armVeryHigh,5)
+    resetArm(500)
     drive_timed(150, 150, 1500)
     drive_timed(40, 40, 2500) #50,50,2300
     msleep(1000)
     drive_timed(-150, -150, 1500)
+    DEBUG()
 
 def getFrisbee():
     # Goal is to grab date tree frisbees and make a date sandwich
