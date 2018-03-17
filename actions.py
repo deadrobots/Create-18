@@ -34,7 +34,7 @@ def selfTest():
     enable_servo(c.servoArmMain)
     enable_servo(c.servoArmAssist)
     moveArm(c.servoArmMain, c.servoArmAssist, c.armHorizontal, 10)
-    msleep(500)
+    msleep(1000)
     moveArm(c.servoArmMain, c.servoArmAssist, c.armVeryHigh, 10)
     # open/close claw
     enable_servo(c.servoClaw)
@@ -95,6 +95,7 @@ def liftRing():
 
 def raiseRing2():
     # orange
+    #this allows create to raise ring in the middle of the cog railway and drive
     timedLineFollowLeftFront(1.9)
     moveServo(c.servoIgus, c.cogLift, 5)
     moveCog_position(2.5, 100)
@@ -177,7 +178,8 @@ def slideTram():
     drive_timed(100, 100, 1600) # shorter drive
     rotate_degrees(-25, 100) # tram gets stuck during this rotate
     driveTilBlackLCliffAndSquareUp(-100)
-    drive_timed(100, 100, 1100)
+    drive_timed(100, 100, 1200) #100, 100, 1100
+    wait_for_button()
 
 def approachCenter():
     rotate_degrees(92, 100) #Used to be 90
@@ -196,29 +198,32 @@ def approachCenter():
     drive_timed(40, 40, 2500) #50,50,2300
     msleep(1000)
     drive_timed(-150, -150, 1500)
-    DEBUG()
 
 def getFrisbee():
-    # Goal is to grab date tree frisbees and make a date sanwich
+    # Goal is to grab date tree frisbees and make a date sandwich
     # Then back up and deposit your fresh date sandwich into the tram bin
     driveTilBlackLFCliff(100)
     driveTilWhiteLFCliff(100)
     moveServo(c.servoClaw, c.clawOpen, 15)
     moveArm(c.servoArmMain, c.servoArmAssist, c.armSandwich, 15)
+    wait_for_button()
     driveTilBlackLFCliff(-100)
     driveTilWhiteLFCliff(-100)
-    DEBUG()
     drive_timed(100,100, 150)
+    wait_for_button()
     moveServo(c.servoClaw, c.clawMid, 15)
     msleep(1000)
-    DEBUG()
     # fix code. create calls error
     moveArm(c.servoArmMain, c.servoArmAssist, c.armSlightlyUp, 2)
     moveServo(c.servoClaw, c.clawFrisbeeTight,2)
+    wait_for_button()
     moveArm(c.servoArmMain, c.servoArmAssist, c.armUp, 2)
+    wait_for_button()
     driveTilBlackLCliffAndSquareUp(100)
     rotate_degrees(53, 50)
+    wait_for_button()
     moveArm(c.servoArmMain,c.servoArmAssist, c.armHigh, 7)
+    DEBUG()
     # This drive isn't straight on
     drive_timed(100, 100, 2700)
     wait_for_button()

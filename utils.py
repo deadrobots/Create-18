@@ -67,8 +67,13 @@ def moveArm(servoMain, servoAssist, endPos, speed):
     if now > endPos:
         speed = -speed
     for i in range(now, endPos, speed):
+        if c.IS_ORANGE_BOT:
+            x = int(2043.45 - 0.987 * (i))
+        elif c.IS_BLUE_BOT:
+            x = int(1924.48 - 0.987 * (i))
+        else:
+            x = int(1906.8 - 0.976 * (i)) #Previous values
         set_servo_position(servoMain, i)
-        x = int(1906.8 - 0.976*(i))
         set_servo_position(servoAssist, x)
         msleep(10)
     set_servo_position(servoMain, endPos)

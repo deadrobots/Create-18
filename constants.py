@@ -27,22 +27,22 @@ IS_ORANGE_BOT = not IS_BLUE_BOT and not IS_YELLOW_BOT
 
 if IS_ORANGE_BOT:
 
-    servoArmMain = 0
-    servoArmAssist = 2
+    servoArmMain = 2
+    servoArmAssist = 3
     servoClaw = 1
-    servoIgus = 3
+    servoIgus = 0
     #Arm Servo Values
-    armStartbox = 400
-    armBotguy = 570
-    armLow = 650
-    armSandwich = 815
-    armSlightlyUp = 830
-    armOut = 800
-    armHorizontal = 900
-    armUp = 1200
-    armHigh = 1500
-    armVeryHigh = 1650
-
+    # armStartbox = 400
+    # armBotguy = 570
+    # armLow = 650
+    # armSandwich = 815
+    # armSlightlyUp = 830
+    # armOut = 800
+    # armHorizontal = 900
+    # armUp = 1200
+    # armHigh = 1500
+    # armVeryHigh = 1650
+    #
     #Claw Servo Values
     clawClosed = 0
     clawFrisbeeTight = 95
@@ -61,6 +61,19 @@ if IS_ORANGE_BOT:
     cogLiftContinued = 770
     evenMoreCogLift = 980
     cogServoVeryHigh = 920
+
+    armStartbox = 330
+    armBotguy = 500
+    armLow = 800 #650
+    armOut = 730
+    armSandwich = 745
+    armHorizontal = 830
+    armUp = 1130
+    armHigh = 1430
+    armVeryHigh = 1630
+    ##
+    armSlightlyUp = 760
+
 
 elif IS_BLUE_BOT:
     #Servo Ports
