@@ -62,9 +62,9 @@ if IS_ORANGE_BOT:
     evenMoreCogLift = 980
     cogServoVeryHigh = 920
 
-    armStartbox = 330
+    armStartbox = 530
     armBotguy = 500
-    armLow = 800 #650
+    armLow = 650
     armOut = 730
     armSandwich = 745
     armHorizontal = 830

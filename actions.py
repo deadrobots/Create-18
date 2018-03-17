@@ -22,7 +22,8 @@ def init():
     elif c.IS_BLUE_BOT:
         print("I AM BLUE")
     else:
-        print("I AM YELLOW")
+        print("I AM YELLOW !!!")
+        DEBUG()
     selfTest()
     print("Press right button to continue")
     wait_for_button()
