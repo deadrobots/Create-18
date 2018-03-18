@@ -96,7 +96,7 @@ def moveArm(endPos, speed):
     motor(c.rightMotor, 0)
 
 def resetArm(time):
-    #drive both motors to full-up positon
+    # drive both motors to full-up positon
     motor(c.leftMotor, 40)
     motor(c.rightMotor, 40)
     msleep(time)
@@ -107,23 +107,23 @@ def resetArm(time):
 
 
 def testArm():
-    print("left motor up")
+    print("Left motor up")
     motor(c.leftMotor, 40)
-    msleep(500)
+    msleep(125)
     motor(c.leftMotor, 0)
-    print("holding with left motor")
+    print("Holding with left motor")
     msleep(1000)
     ao()
     msleep(1000)
-    print("right motor up")
+    print("Right motor up")
     motor(c.rightMotor, 40)
-    msleep(500)
+    msleep(125)
     motor(c.rightMotor, 0)
-    print("holding with right motor")
+    print("Holding with right motor")
     msleep(1000)
     ao()
     msleep(1000)
-    #resetArm()
+    # resetArm()
 
 
 

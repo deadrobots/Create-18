@@ -16,8 +16,9 @@ def main():
     act.dropRing()
     act.slideTram()
     act.approachCenter()
-    act.getFrisbee()
+    act.approachBotguy()
     u.DEBUG()
+    act.getFrisbee()
     create_disconnect()
 if __name__ == "__main__":
     sys.stdout = os.fdopen(sys.stdout.fileno(), "w", 0)

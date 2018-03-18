@@ -237,13 +237,17 @@ def lineFollowLeftFrontTilWhite():
 
 
 def timedLineFollowRight(time):
+    # This is a line follow
+    # Needs to be less severe because final angle
+    # Center value? (Gray value in between White and Black)
     sec = seconds()
-    while (seconds() - sec<time):
+    while(seconds() - sec<time):
         if get_create_rcliff_amt() < 2000:
-            create_drive_direct(100, 50)
-        else:
             create_drive_direct(50, 100)
+        else:
+            create_drive_direct(100, 80)
     create_stop()
+
 
 def lineFollowRightAndLift(time):
     sec = seconds()
@@ -312,14 +316,3 @@ def moveCog_position (inches,speed):
     print (ticks)
     print (get_motor_position_counter(c.cogMotor))
 
-def drive_straight(time):
-    # This is a line follow
-    # Needs to be less severe because final angle
-    # Center value? (Gray value in between White and Black)
-    sec = seconds()
-    while(seconds() - sec<time):
-        if get_create_rcliff_amt() < 2000:
-            create_drive_direct(50, 100)
-        else:
-            create_drive_direct(100, 80)
-    create_stop()
