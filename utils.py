@@ -95,10 +95,10 @@ def moveArm(endPos, speed):
     motor(c.leftMotor, 0)
     motor(c.rightMotor, 0)
 
-def resetArm(time):
+def resetArm(power, time):
     # drive both motors to full-up positon
-    motor(c.leftMotor, 40)
-    motor(c.rightMotor, 40)
+    motor(c.leftMotor, power)
+    motor(c.rightMotor, power)
     msleep(time)
     ao()
     msleep(1000)

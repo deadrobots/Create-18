@@ -38,7 +38,8 @@ if IS_ORANGE_BOT:
     clawClosed = 0
     clawFrisbeeTight = 80
     clawMid = 200
-    clawBotguy = 500
+    clawBotguy = 400
+    clawGrabBG = 500
     clawTram = 600 #Position to move tram
     clawOpen = 1065
     clawStart = 1730 #All the way back
@@ -73,12 +74,8 @@ if IS_ORANGE_BOT:
     armUp = -440
     armSlightlyUp = -600
     armSandwich = -620
+    armBotguy = -650
     armStartbox = -700
-
-    armBotguy = 500
-    armLow = 650
-    armOut = 730
-    armHorizontal = 830
 
 
 

@@ -33,7 +33,7 @@ def init():
 def selfTest():
     # raise arm
     testArm()
-    resetArm(2000)
+    resetArm(30, 2000)
 
     # open/close claw
     enable_servo(c.servoClaw)
@@ -61,7 +61,7 @@ def selfTest():
 
 def turnToRing():
     print ('Turn to ring')
-    resetArm(2000)
+    resetArm(30, 2000)
     moveServo(c.servoClaw, c.clawClosed, 20)
     #set_servo_position(c.servoArm,c.armUp)
     #msleep(500)
@@ -186,13 +186,31 @@ def approachCenter():
     msleep(1000)
 
 def approachBotguy():
-    moveServo(c.servoClaw, c.clawBotguy, 35)
-    resetArm(500)
+    moveServo(c.servoClaw, c.clawTram, 20)
+    resetArm(30, 500)
     drive_timed(-100, -100, 500)
     rotate_degrees(-90, 100)
     driveTilBlackLCliffAndSquareUp(100)
     driveTilWhiteLCliff(100)
-    drive_timed(-100, -100, 750)
+    drive_timed(-100, -100, 1500)
+    moveArm(c.armBotguy, 30)
+    moveServo(c.servoClaw, c.clawBotguy, 20)
+    msleep(250)
+    driveTilBlackLCliffAndSquareUp(-100)
+    drive_timed(100, 100, 250)
+    moveServo(c.servoClaw, c.clawTram, 40)
+    msleep(250)
+    drive_timed(100, 100, 1250)
+    moveServo(c.servoClaw, c.clawClosed, 20)
+    wait_for_button()
+
+
+
+
+
+
+
+
 
 def approachSandwich():
     if c.IS_ORANGE_BOT:#Has worked consistently (Twice)
@@ -202,7 +220,7 @@ def approachSandwich():
         timedLineFollowRight(7.5)
         drive_timed(90, -90, 2200)
 
-    resetArm(500)
+    resetArm(40, 500)
     drive_timed(135, 150, 1500) # Trouble here
     drive_timed(40, 40, 2500) #50,50,2300
     msleep(1000)
