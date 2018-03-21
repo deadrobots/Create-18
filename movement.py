@@ -4,7 +4,7 @@ from utils import *
 import constants as c
 
 
-def drive_timed(left, right, time):
+def drive_timed(left, right, time): #DRS forward is opposite of create forward
     create_drive_direct(-right, -left)
     msleep(time)
     create_drive_direct(0, 0)
@@ -121,8 +121,8 @@ def lineFollowTilCrossBlack():
     create_stop()
 
 def driveTilBlackLCliffAndSquareUp(speed):
-    lspeed = speed
-    rspeed = speed
+    lspeed = -speed
+    rspeed = -speed
     create_drive_direct(lspeed, rspeed)
     while (lspeed or rspeed):
         if get_create_lcliff_amt() < 2000:
@@ -133,25 +133,25 @@ def driveTilBlackLCliffAndSquareUp(speed):
             create_drive_direct(lspeed, rspeed)
 
 def driveTilBlackLCliff(speed):
-    create_drive_direct(speed, speed)
+    create_drive_direct(-speed, -speed)
     while (get_create_lcliff_amt() > 2000):
         pass
     create_stop()
 
 def driveTilBlackLFCliff(speed):
-    create_drive_direct(speed, speed)
+    create_drive_direct(-speed, -speed)
     while (get_create_lfcliff_amt() > 2000):
         pass
     create_stop()
 
 def driveTilWhiteLCliff(speed):
-    create_drive_direct(speed, speed)
+    create_drive_direct(-speed, -speed)
     while (get_create_lcliff_amt() < 2000):
         pass
     create_stop()
 
 def driveTilWhiteLFCliff(speed):
-    create_drive_direct(speed, speed)
+    create_drive_direct(-speed, -speed)
     while (get_create_lfcliff_amt() < 2000):
         pass
     create_stop()

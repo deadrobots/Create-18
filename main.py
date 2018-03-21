@@ -17,6 +17,7 @@ def main():
     act.slideTram()
     act.approachCenter()
     act.approachBotguy()
+    act.deliverBotguy()
     u.DEBUG()
     act.getFrisbee()
     create_disconnect()

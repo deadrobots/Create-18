@@ -77,7 +77,7 @@ def turnToRing():
         moveCog_position(4, 95)
     elif c.IS_BLUE_BOT:
         moveCog_position(3.0, 95)
-    driveTilBlackLCliff(100)
+    driveTilBlackLCliff(-100)
     if c.IS_ORANGE_BOT:
         drive_timed(-30, -60, 900)
     elif c.IS_BLUE_BOT:
@@ -116,41 +116,13 @@ def raiseRing2():
         moveCog_position(1.5, 100)
     timedLineFollowLeftFront(1.8)
 
-# def raiseRing():
-#     if c.IS_ORANGE_BOT:
-#         motor(c.cogMotor, 100)
-#         moveServo(c.servoIgus, c.cogStart - 620, 5)
-#         timedLineFollowLeftFront(2.2)
-#         motor(c.cogMotor, 0)
-#         moveServo(c.servoIgus, c.cogStart - 640, 5)
-#         timedLineFollowLeftFront(1)
-#     elif c.IS_BLUE_BOT:
-#         motor(c.cogMotor, 100)
-#         moveServo(c.servoIgus, c.cogStart - 610, 5)
-#         timedLineFollowLeftFront(2.2)
-#         motor(c.cogMotor, 0)
-#         moveServo(c.servoIgus, c.cogStart - 650, 5)
-#     if c.IS_ORANGE_BOT:
-#         moveServo(c.servoIgus, c.cogLiftContinued,5)
-#     elif c.IS_BLUE_BOT:
-#         moveServo(c.servoIgus, c.cogLiftContinued, 5)
-#         #motor(c.cogMotor, 100)
-#     lineFollowLeftFrontTilBlack()
-#     motor(c.cogMotor, 0)
-#     if c.IS_ORANGE_BOT:
-#         moveCog_position(5, 50)
-#     elif c.IS_BLUE_BOT:
-#         pass
-#     lineFollowLeftFrontTilWhite()
-#     timedLineFollowLeftFront(.5)
 
 def dropRing():
-
     moveCog_position(-5, 100)
-    msleep(750)
+    msleep(500)
     moveServo(c.servoIgus, c.cogRingDrop, 5)
     moveCog_position(-1, 100)
-    msleep(1000)
+    msleep(500)
     drive_timed(-50, 50, 1200)
     if c.IS_ORANGE_BOT:
         moveServo(c.servoIgus, c.cogStart-300, 3)
@@ -172,7 +144,7 @@ def slideTram():
     rotate_degrees(-75, 100)
     drive_timed(100, 100, 1600) # shorter drive
     rotate_degrees(-25, 100) # tram gets stuck during this rotate
-    driveTilBlackLCliffAndSquareUp(-100)
+    driveTilBlackLCliffAndSquareUp(100)
     if c.IS_ORANGE_BOT:
         drive_timed(100, 100, 1270) #100, 100, 1100
     else: #is blue
@@ -182,7 +154,7 @@ def slideTram():
 def approachCenter():
     rotate_degrees(92, 100) #Used to be 90
     drive_timed(100,100,1900)
-    driveTilBlackLCliffAndSquareUp(100)
+    driveTilBlackLCliffAndSquareUp(-100)
     msleep(1000)
 
 def approachBotguy():
@@ -190,21 +162,37 @@ def approachBotguy():
     resetArm(30, 500)
     drive_timed(-100, -100, 500)
     rotate_degrees(-90, 100)
-    driveTilBlackLCliffAndSquareUp(100)
-    driveTilWhiteLCliff(100)
+    driveTilBlackLCliffAndSquareUp(-100)
+    driveTilWhiteLCliff(-100)
     drive_timed(-100, -100, 1500)
     moveArm(c.armBotguy, 30)
     moveServo(c.servoClaw, c.clawBotguy, 20)
     msleep(250)
-    driveTilBlackLCliffAndSquareUp(-100)
+    driveTilBlackLCliffAndSquareUp(100)
     drive_timed(100, 100, 250)
-    moveServo(c.servoClaw, c.clawTram, 40)
+    moveServo(c.servoClaw, c.clawTram, 10)
+    moveArm(c.armBotguyPickUp, 6)
     msleep(250)
-    drive_timed(100, 100, 1250)
-    moveServo(c.servoClaw, c.clawClosed, 20)
-    wait_for_button()
+    drive_timed(100, 100, 1650)
+    moveArm(c.armBotguyPickUp, 6)
+    moveServo(c.servoClaw, c.clawClosed, 10)
+    msleep(500)
+    driveTilBlackLCliffAndSquareUp(-100)
+    msleep(300)
+    driveTilWhiteLFCliff(-100)
+    moveArm(c.armBotguyLift, 8)
+    driveTilBlackLFCliff(-100)
+    msleep(1000)
 
 
+def deliverBotguy():
+    moveArm(c.armBotguyDelivery, 6)
+    msleep(1000)
+    driveTilBlackLCliffAndSquareUp(100)
+    driveTilWhiteLCliff(100)
+    drive_timed(100, 100, 250)
+    moveArm(c.armScore, 7)
+    moveServo(c.servoClaw, c.clawOpen, 5)
 
 
 
@@ -229,20 +217,20 @@ def approachSandwich():
 def getFrisbee():
     # Goal is to grab date tree frisbees and make a date sandwich
     # Then back up and deposit your fresh date sandwich into the tram bin
-    driveTilBlackLFCliff(100)
-    driveTilWhiteLFCliff(100)
+    driveTilBlackLFCliff(-100)
+    driveTilWhiteLFCliff(-100)
     moveServo(c.servoClaw, c.clawOpen, 15)
     moveArm(c.armSandwich, 15)
     msleep(700)
-    driveTilBlackLFCliff(-100)
-    driveTilWhiteLFCliff(-100)
+    driveTilBlackLFCliff(100)
+    driveTilWhiteLFCliff(100)
     drive_timed(100,100, 170) # Used to be 150
     moveServo(c.servoClaw, c.clawMid, 15)
     msleep(1000)
     moveArm(c.armSlightlyUp, 10)
     moveServo(c.servoClaw, c.clawFrisbeeTight,2)
     moveArm(c.armDelivery, 7)
-    driveTilBlackLCliffAndSquareUp(100)
+    driveTilBlackLCliffAndSquareUp(-100)
     rotate_degrees(53, 50)
     # This drive isn't straight on
     if c.IS_BLUE_BOT:
