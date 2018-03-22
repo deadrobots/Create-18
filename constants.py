@@ -36,24 +36,27 @@ if IS_ORANGE_BOT:
 
     #Claw Servo Values
     clawClosed = 0
-    clawFrisbeeTight = 80
-    clawMid = 200
-    clawBotguy = 400
-    clawGrabBG = 500
-    clawTram = 600 #Position to move tram
-    clawOpen = 1065
-    clawStart = 1730 #All the way back
+    clawFrisbeeTight = 397
+    clawMid = 517
+    clawBotguy = 717
+    clawGrabBG = 817
+    clawTram = 917 #Position to move tram
+    clawOpen = 1382
+    clawStart = 2047 #All the way back; used to be 1730
 
     #Cog Servo Values
+    cogLiftContinued = 770
+    cogServoVeryHigh = 920
+    evenMoreCogLift = 980
+    cogLift = 1090
     cogRingDrop = 1100
     cogStartBox = 1200
     cogPegTwo = 1350
     cogStart = 1650
-    cogGrab = 1800
-    cogLift = 1090
-    cogLiftContinued = 770
-    evenMoreCogLift = 980
-    cogServoVeryHigh = 920
+    cogGrab = 1725
+
+
+
 
     #Old arm servo values
     # armStartbox = 530
@@ -69,9 +72,9 @@ if IS_ORANGE_BOT:
 
     #current motor arm values
     armVeryHigh = -150
-    armHigh = -310
-    armBotguyDelivery = -340
-    armScore = -350
+    armHigh = -290
+    armBotguyDelivery = -355
+    armScore = -400
     armDelivery = -415
     armUp = -440
     armSlightlyUp = -600

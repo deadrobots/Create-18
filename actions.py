@@ -137,25 +137,30 @@ def dropRing():
 def slideTram():
     # Depends on position after drop, so may need to be changed as drop method changes
     # Tram keeps getting stuck on the claw pegs and the connector - need to work on sliding it without getting stuck
-    drive_timed(100, 100, 1120)
+    drive_timed(100, 100, 1320)
     rotate_degrees(-165, 100)
+    msleep(500)
     moveArm(c.armHigh, 10)
-    drive_timed(100, 100, 300)
+    msleep(500)
+    drive_timed(100, 100, 200)
     rotate_degrees(-75, 100)
-    drive_timed(100, 100, 1600) # shorter drive
+    msleep(500)
+    drive_timed(100, 100, 1900) # shorter drive
     rotate_degrees(-25, 100) # tram gets stuck during this rotate
     driveTilBlackLCliffAndSquareUp(100)
     if c.IS_ORANGE_BOT:
-        drive_timed(100, 100, 1270) #100, 100, 1100
+        drive_timed(100, 100, 1370) #100, 100, 1100
     else: #is blue
         drive_timed(100, 100, 1200)
     msleep(1000)
+
 
 def approachCenter():
     rotate_degrees(92, 100) #Used to be 90
     drive_timed(100,100,1900)
     driveTilBlackLCliffAndSquareUp(-100)
     msleep(1000)
+
 
 def approachBotguy():
     moveServo(c.servoClaw, c.clawTram, 20)
@@ -166,15 +171,17 @@ def approachBotguy():
     driveTilWhiteLCliff(-100)
     drive_timed(-100, -100, 1500)
     moveArm(c.armBotguy, 30)
-    moveServo(c.servoClaw, c.clawBotguy, 20)
+    moveServo(c.servoClaw, c.clawMid, 20)
     msleep(250)
     driveTilBlackLCliffAndSquareUp(100)
     drive_timed(100, 100, 250)
+    moveArm(c.armBotguyPickUp, 6)
     moveServo(c.servoClaw, c.clawTram, 10)
-    moveArm(c.armBotguyPickUp, 6)
     msleep(250)
-    drive_timed(100, 100, 1650)
-    moveArm(c.armBotguyPickUp, 6)
+    drive_timed(100, 100, 700)
+    moveServo(c.servoClaw, c.clawBotguy, 15)
+    msleep(500)
+    drive_timed(100, 100, 750)
     moveServo(c.servoClaw, c.clawClosed, 10)
     msleep(500)
     driveTilBlackLCliffAndSquareUp(-100)
@@ -190,9 +197,11 @@ def deliverBotguy():
     msleep(1000)
     driveTilBlackLCliffAndSquareUp(100)
     driveTilWhiteLCliff(100)
-    drive_timed(100, 100, 250)
+    drive_timed(100, 100, 300)
     moveArm(c.armScore, 7)
-    moveServo(c.servoClaw, c.clawOpen, 5)
+    moveServo(c.servoClaw, c.clawOpen, 7)
+    drive_timed(-100, -100, 750)
+    moveArm(c.armStartbox, 6)
 
 
 
