@@ -26,11 +26,8 @@ IS_BLUE_BOT = digital(ROBOT_ID_BLUE)
 IS_ORANGE_BOT = not IS_BLUE_BOT and not IS_YELLOW_BOT
 
 
-
 if IS_ORANGE_BOT:
 
-    servoArmMain = 2
-    servoArmAssist = 3
     servoClaw = 1
     servoIgus = 0
 
@@ -55,21 +52,6 @@ if IS_ORANGE_BOT:
     cogStart = 1650
     cogGrab = 1725
 
-
-
-
-    #Old arm servo values
-    # armStartbox = 530
-    # armBotguy = 500
-    # armLow = 650
-    # armOut = 730
-    # armSandwich = 745
-    # armHorizontal = 830
-    # armUp = 1130
-    # armHigh = 1430
-    # armVeryHigh = 1630
-    # armSlightlyUp = 760
-
     #current motor arm values
     armVeryHigh = -150
     armHigh = -290
@@ -88,8 +70,6 @@ if IS_ORANGE_BOT:
 
 elif IS_BLUE_BOT:
     #Servo Ports
-    servoArmMain = 2
-    servoArmAssist = 3
     servoClaw = 1
     servoIgus = 0
 
@@ -111,12 +91,26 @@ elif IS_BLUE_BOT:
     clawStart = 2047 #All the way back
 
     #Cog Servo Values
+    cogServoVeryHigh = 5
+    evenMoreCogLift = 25
+    cogLiftContinued = 75
+    cogLift = 200
     cogRingDrop = 215
     cogStartBox = 350
     cogPegTwo = 500
     cogStart = 800
-    cogGrab = 980
-    cogLift = 200
-    cogLiftContinued = 75
-    evenMoreCogLift = 25
-    cogServoVeryHigh = 5
+    cogGrab = 800
+
+    #current motor arm values
+    armVeryHigh = -150
+    armHigh = -290
+    armBotguyDelivery = -355
+    armScore = -400
+    armDelivery = -415
+    armUp = -440
+    armSlightlyUp = -600
+    armBotguyLift = -613
+    armSandwich = -620
+    armBotguy = -650
+    armBotguyPickUp = -680
+    armStartbox = -700

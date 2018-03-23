@@ -63,26 +63,24 @@ def turnToRing():
     print ('Turn to ring')
     resetArm(30, 2000)
     moveServo(c.servoClaw, c.clawClosed, 20)
-    #set_servo_position(c.servoArm,c.armUp)
-    #msleep(500)
     drive_timed(100, 100, 2000) #squares up to west wall
     if c.IS_ORANGE_BOT:
         drive_timed(-100, -75, 1375)
+        drive_timed(-180, 180, 1000)
     elif c.IS_BLUE_BOT:
         drive_timed(-100, -95, 1100)
-    drive_timed(-180, 180, 1000)
+        drive_timed(-180, 180, 1100)
     drive_timed(100, 100, 1000)
     moveServo(c.servoIgus, c.cogGrab, 10)
     if c.IS_ORANGE_BOT:
-        moveCog_position(4, 95)
+        moveCog_position(4.0, 95)
     elif c.IS_BLUE_BOT:
-        moveCog_position(3.0, 95)
+        moveCog_position(3.5, 95)
     driveTilBlackLCliff(-100)
     if c.IS_ORANGE_BOT:
         drive_timed(-30, -60, 900)
     elif c.IS_BLUE_BOT:
         drive_timed(-30, -50, 775)
-
 
 def liftRing():
     if c.IS_ORANGE_BOT:
@@ -91,7 +89,7 @@ def liftRing():
         moveServo(c.servoIgus, c.cogStart - 350, 5)
     elif c.IS_BLUE_BOT:
         moveServo(c.servoIgus, c.cogStart - 450, 5)
-        moveCog_position(5.72, 100)
+        moveCog_position(5.7, 100)
         moveServo(c.servoIgus, c.cogStart - 480, 5)
 
 def raiseRing2():
@@ -102,20 +100,19 @@ def raiseRing2():
     moveCog_position(2.5, 100)
     timedLineFollowLeftFront(1.9)
     moveServo(c.servoIgus, c.evenMoreCogLift, 5)
-    if c.IS_BLUE_BOT:
-        moveCog_position(5, 70)
-    else: #Is orange
+    if c.IS_ORANGE_BOT:
         moveCog_position(3.8, 100)
+    else: #Is blue
+        moveCog_position(5, 70)
     lineFollowLeftFrontTilBlack()
     lineFollowLeftFrontTilWhite()
     moveServo(c.servoIgus, c.cogServoVeryHigh, 5)
     moveArm(c.armVeryHigh, 10)
-    if c.IS_BLUE_BOT:
-        moveCog_position(1.8, 100)
-    else:
+    if c.IS_ORANGE_BOT:
         moveCog_position(1.5, 100)
+    else:
+        moveCog_position(1.8, 100)
     timedLineFollowLeftFront(1.8)
-
 
 def dropRing():
     moveCog_position(-5, 100)
@@ -126,13 +123,12 @@ def dropRing():
     drive_timed(-50, 50, 1200)
     if c.IS_ORANGE_BOT:
         moveServo(c.servoIgus, c.cogStart-300, 3)
-    elif c.IS_BLUE_BOT:
-        moveServo(c.servoIgus, c.cogStart - 375, 3)
     else:
-        print("PUT SOMETHING HERE!")
-        exit(0)
+        moveServo(c.servoIgus, c.cogStart - 375, 3)
     resetChain()
     moveServo(c.servoIgus, c.cogRingDrop, 5)
+    DEBUG()
+
 
 def slideTram():
     # Depends on position after drop, so may need to be changed as drop method changes
