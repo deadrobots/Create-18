@@ -294,15 +294,12 @@ def resetChain():
             break
     freeze(c.cogMotor)
 
-if c.IS_ORANGE_BOT:
-    INCHES_TO_TICKS = 600
-elif c.IS_BLUE_BOT:
-    INCHES_TO_TICKS = 560
+
 
 def moveCog_position (inches,speed):
-    print ("extending exact distance")
+    #print ("extending exact distance")
     clear_motor_position_counter(c.cogMotor)
-    ticks = INCHES_TO_TICKS * inches
+    ticks = c.INCHES_TO_TICKS * inches
     if inches >= 0:
         motor(c.cogMotor, speed)
         while get_motor_position_counter(c.cogMotor) <= ticks:
@@ -313,6 +310,6 @@ def moveCog_position (inches,speed):
         while get_motor_position_counter(c.cogMotor) >= ticks:
             pass
     motor(c.cogMotor, 0)
-    print (ticks)
-    print (get_motor_position_counter(c.cogMotor))
+    #print (ticks)
+    #print (get_motor_position_counter(c.cogMotor))
 

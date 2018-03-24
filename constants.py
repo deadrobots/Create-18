@@ -31,11 +31,13 @@ if IS_ORANGE_BOT:
     servoClaw = 1
     servoIgus = 0
 
+    INCHES_TO_TICKS = 600
+
     #Claw Servo Values
     clawClosed = 0
     clawFrisbeeTight = 397
     clawMid = 517
-    clawBotguy = 717
+    clawBotguy = 650 #was 717
     clawGrabBG = 817
     clawTram = 917 #Position to move tram
     clawOpen = 1382
@@ -72,6 +74,8 @@ elif IS_BLUE_BOT:
     #Servo Ports
     servoClaw = 1
     servoIgus = 0
+
+    INCHES_TO_TICKS = 560
 
     #Arm Servo Values
     armStartbox = 250

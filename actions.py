@@ -70,7 +70,7 @@ def turnToRing():
     elif c.IS_BLUE_BOT:
         drive_timed(-100, -95, 1100)
         drive_timed(-180, 180, 1100)
-    drive_timed(100, 100, 1000)
+    drive_timed(100, 100, 1000) #square up on south wall
     moveServo(c.servoIgus, c.cogGrab, 10)
     if c.IS_ORANGE_BOT:
         moveCog_position(4.0, 95)
@@ -78,7 +78,7 @@ def turnToRing():
         moveCog_position(3.5, 95)
     driveTilBlackLCliff(-100)
     if c.IS_ORANGE_BOT:
-        drive_timed(-30, -60, 900)
+        drive_timed(-30, -60, 550)
     elif c.IS_BLUE_BOT:
         drive_timed(-30, -50, 775)
 
@@ -127,22 +127,34 @@ def dropRing():
         moveServo(c.servoIgus, c.cogStart - 375, 3)
     resetChain()
     moveServo(c.servoIgus, c.cogRingDrop, 5)
-    DEBUG()
+
 
 
 def slideTram():
     # Depends on position after drop, so may need to be changed as drop method changes
     # Tram keeps getting stuck on the claw pegs and the connector - need to work on sliding it without getting stuck
-    drive_timed(100, 100, 1320)
-    rotate_degrees(-165, 100)
+    if c.IS_ORANGE_BOT:
+        drive_timed(100, 100, 850)
+        rotate_degrees(-165, 100)
+    else:
+        drive_timed(100, 100, 1320)
+        rotate_degrees(-165, 100)
     msleep(500)
     moveArm(c.armHigh, 10)
     msleep(500)
-    drive_timed(100, 100, 200)
-    rotate_degrees(-75, 100)
+    if c.IS_ORANGE_BOT:
+        pass
+    else:
+        drive_timed(100, 100, 200)
+    rotate_degrees(-75, 100) #this turn is where the arm tries to connect to the tram and start pushing it
     msleep(500)
-    drive_timed(100, 100, 1900) # shorter drive
-    rotate_degrees(-25, 100) # tram gets stuck during this rotate
+    if c.IS_ORANGE_BOT:
+        drive_timed(100, 100, 1000) # shorter drive
+        rotate_degrees(-25, 100)  # tram gets stuck during this rotate
+        drive_timed(100, 100, 500)
+    else:
+        drive_timed(100, 100, 1900)  # shorter drive
+        rotate_degrees(-25, 100)  # tram gets stuck during this rotate
     driveTilBlackLCliffAndSquareUp(100)
     if c.IS_ORANGE_BOT:
         drive_timed(100, 100, 1370) #100, 100, 1100
@@ -172,9 +184,10 @@ def approachBotguy():
     driveTilBlackLCliffAndSquareUp(100)
     drive_timed(100, 100, 250)
     moveArm(c.armBotguyPickUp, 6)
-    moveServo(c.servoClaw, c.clawTram, 10)
+    moveServo(c.servoClaw, c.clawBotguy, 10) #was clawTram
     msleep(250)
-    drive_timed(100, 100, 700)
+    drive_timed(100, 90, 700)
+    wait_for_button()
     moveServo(c.servoClaw, c.clawBotguy, 15)
     msleep(500)
     drive_timed(100, 100, 750)
@@ -186,6 +199,7 @@ def approachBotguy():
     moveArm(c.armBotguyLift, 8)
     driveTilBlackLFCliff(-100)
     msleep(1000)
+    wait_for_button()
 
 
 def deliverBotguy():
