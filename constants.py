@@ -57,15 +57,15 @@ if IS_ORANGE_BOT:
     #current motor arm values
     armVeryHigh = -150
     armHigh = -290
-    armBotguyDelivery = -355
+    armBotguyDelivery = -330 #was -355
     armScore = -400
     armDelivery = -415
     armUp = -440
     armSlightlyUp = -600
     armBotguyLift = -613
     armSandwich = -620
-    armBotguy = -650
-    armBotguyPickUp = -680
+    armBotguy = -660
+    armBotguyPickUp = -670
     armStartbox = -700
 
 

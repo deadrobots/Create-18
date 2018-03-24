@@ -31,10 +31,10 @@ def init():
     c.START_TIME = seconds()
 
 def selfTest():
+    #tests all motors and servos
     # raise arm
     testArm()
     resetArm(30, 2000)
-
     # open/close claw
     enable_servo(c.servoClaw)
     moveServo(c.servoClaw, c.clawClosed, 15)
@@ -43,7 +43,7 @@ def selfTest():
     drive_timed(100, 100, 2500)
     msleep(250)
     drive_timed(-100, -100, 2500)
-    msleep(250)
+    #msleep(250)
     # lower ramp
     enable_servo(c.servoIgus)
     moveServo(c.servoIgus, c.cogStart - 300, 10)
@@ -60,9 +60,10 @@ def selfTest():
 
 
 def turnToRing():
+    #squares up on Wand S walls then
     print ('Turn to ring')
     resetArm(30, 2000)
-    moveServo(c.servoClaw, c.clawClosed, 20)
+    moveServo(c.servoClaw, c.clawClosed, 35)
     drive_timed(100, 100, 2000) #squares up to west wall
     if c.IS_ORANGE_BOT:
         drive_timed(-100, -75, 1375)
@@ -125,7 +126,10 @@ def dropRing():
         moveServo(c.servoIgus, c.cogStart-300, 3)
     else:
         moveServo(c.servoIgus, c.cogStart - 375, 3)
-    resetChain()
+    wait_for_button()
+    moveCog_position(-6, 100)
+    wait_for_button()
+    #resetChain()
     moveServo(c.servoIgus, c.cogRingDrop, 5)
 
 
@@ -133,25 +137,26 @@ def dropRing():
 def slideTram():
     # Depends on position after drop, so may need to be changed as drop method changes
     # Tram keeps getting stuck on the claw pegs and the connector - need to work on sliding it without getting stuck
+    motor(c.cogMotor, -30)
     if c.IS_ORANGE_BOT:
         drive_timed(100, 100, 850)
         rotate_degrees(-165, 100)
     else:
         drive_timed(100, 100, 1320)
         rotate_degrees(-165, 100)
-    msleep(500)
     moveArm(c.armHigh, 10)
-    msleep(500)
+    resetChain()
     if c.IS_ORANGE_BOT:
         pass
     else:
         drive_timed(100, 100, 200)
-    rotate_degrees(-75, 100) #this turn is where the arm tries to connect to the tram and start pushing it
-    msleep(500)
+    rotate_degrees(-75, 100) # this turn is where the arm tries to connect to the tram and starts pushing it
+    msleep(500) # do not remove: allows tram to settle
     if c.IS_ORANGE_BOT:
-        drive_timed(100, 100, 1000) # shorter drive
+        drive_timed(100, 100, 1200) # shorter drive
         rotate_degrees(-25, 100)  # tram gets stuck during this rotate
-        drive_timed(100, 100, 500)
+        drive_timed(100, 100, 400)
+        rotate_degrees(-15, 100)
     else:
         drive_timed(100, 100, 1900)  # shorter drive
         rotate_degrees(-25, 100)  # tram gets stuck during this rotate
@@ -160,7 +165,7 @@ def slideTram():
         drive_timed(100, 100, 1370) #100, 100, 1100
     else: #is blue
         drive_timed(100, 100, 1200)
-    msleep(1000)
+    #msleep(1000)
 
 
 def approachCenter():
@@ -182,43 +187,43 @@ def approachBotguy():
     moveServo(c.servoClaw, c.clawMid, 20)
     msleep(250)
     driveTilBlackLCliffAndSquareUp(100)
-    drive_timed(100, 100, 250)
+    drive_timed(100, 90, 250)
     moveArm(c.armBotguyPickUp, 6)
     moveServo(c.servoClaw, c.clawBotguy, 10) #was clawTram
     msleep(250)
-    drive_timed(100, 90, 700)
-    wait_for_button()
+    drive_timed(100, 100, 700)
+    #wait_for_button()
     moveServo(c.servoClaw, c.clawBotguy, 15)
     msleep(500)
     drive_timed(100, 100, 750)
+    moveArm(c.armBotguy, 10)
     moveServo(c.servoClaw, c.clawClosed, 10)
     msleep(500)
     driveTilBlackLCliffAndSquareUp(-100)
     msleep(300)
     driveTilWhiteLFCliff(-100)
-    moveArm(c.armBotguyLift, 8)
     driveTilBlackLFCliff(-100)
-    msleep(1000)
-    wait_for_button()
+    msleep(500)
 
 
 def deliverBotguy():
-    moveArm(c.armBotguyDelivery, 6)
+    moveArm(c.armBotguyDelivery, 7)
     msleep(1000)
     driveTilBlackLCliffAndSquareUp(100)
     driveTilWhiteLCliff(100)
     drive_timed(100, 100, 300)
+    rotate_degrees(-5, 50)
     moveArm(c.armScore, 7)
-    moveServo(c.servoClaw, c.clawOpen, 7)
-    drive_timed(-100, -100, 750)
-    moveArm(c.armStartbox, 6)
+    msleep(1000)
+    ao()
+    DEBUG()
+
+    # moveServo(c.servoClaw, c.clawOpen, 7)
+    # drive_timed(-100, -100, 750)
+    # moveArm(c.armStartbox, 6)
 
 
-
-
-
-
-
+#add back to routine if there's time
 def approachSandwich():
     if c.IS_ORANGE_BOT:#Has worked consistently (Twice)
         timedLineFollowRight(7) # Used to be 6.35
@@ -262,38 +267,6 @@ def getFrisbee():
     moveServo(c.servoClaw, c.clawClosed, 5)
     wait_for_button()
 
-
 #test functions
 #not used, placed out of the way
 
-# def goToCenter():
-#     #Create line follows to middle then goes to right of center area to reach Botguy
-#     lineFollowTilCrossBlack()
-#     timedLineFollow(.85)
-#     set_servo_position(c.servoClaw, c.clawClosed)
-#     wait_for_button()
-#     drive_timed(150, -250, 900)
-#     moveArm(c.servoArmMain, c.servoArmAssist, c.armHorizontal, 5)
-#     drive_timed(75,75,500)
-#     set_servo_position(c.servoClaw, c.clawOpen)
-#     msleep(600)
-#     drive_timed(150, -250, 1500)
-#     drive_timed(75, 75, 4000)
-#     drive_timed(75, -175, 400)
-#     drive_timed(-75, -75, 500)
-#     drive_timed(75, 75, 2500)
-#     set_servo_position(c.servoClaw, c.clawClosed)
-#     msleep(500)
-#     set_servo_position(c.servoClaw, c.clawOpen)
-#     driveTilBlackRCliff(150)
-#     turnTilBlackLCliff(100, 0)
-#     drive_timed(-130, -130, 800)
-#     set_servo_position(c.servoArmMain, c.servoArmAssist, c.armHigh)
-#
-#     msleep(500)
-#     drive_timed(-100, -100, 2000)
-#     moveArm(c.servoArmMain, c.servoArmAssist, c.armUp, 10)
-#     msleep(2000)
-#     moveArm(c.servoArmMain, c.servoArmAssist, 1420, 10)
-#     drive_timed(100, 100, 2000)
-#     DEBUG()
