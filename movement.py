@@ -120,10 +120,10 @@ def lineFollowTilCrossBlack():
             create_drive_direct(150, 200)
     create_stop()
 
-def driveTilBlackLCliffAndSquareUp(speed):
-    lspeed = -speed
-    rspeed = -speed
-    create_drive_direct(lspeed, rspeed)
+def driveTilBlackLCliffAndSquareUp(lspeed, rspeed):
+    lspeed = -lspeed
+    rspeed = -rspeed
+    create_drive_direct(rspeed, lspeed)
     while (lspeed or rspeed):
         if get_create_lcliff_amt() < 2000:
             lspeed = 0

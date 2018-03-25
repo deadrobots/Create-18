@@ -56,6 +56,7 @@ if IS_ORANGE_BOT:
 
     #current motor arm values
     armVeryHigh = -150
+    armTram = -285
     armHigh = -290
     armBotguyDelivery = -330 #was -355
     armScore = -400
@@ -64,7 +65,7 @@ if IS_ORANGE_BOT:
     armSlightlyUp = -600
     armBotguyLift = -613
     armSandwich = -620
-    armBotguy = -660
+    armBotguy = -650
     armBotguyPickUp = -670
     armStartbox = -700
 
@@ -90,7 +91,10 @@ elif IS_BLUE_BOT:
 
     #Claw Servo Values
     clawClosed = 230
-    clawTram = 950  # Position to move tram
+    clawMid = 550
+    clawBotguy = 650
+    clawGrabBG = 750
+    clawTram = 900  # Position to move tram
     clawOpen = 1400
     clawStart = 2047 #All the way back
 
@@ -107,14 +111,15 @@ elif IS_BLUE_BOT:
 
     #current motor arm values
     armVeryHigh = -150
+    armTram = -285
     armHigh = -290
-    armBotguyDelivery = -355
-    armScore = -400
-    armDelivery = -415
-    armUp = -440
-    armSlightlyUp = -600
-    armBotguyLift = -613
-    armSandwich = -620
-    armBotguy = -650
-    armBotguyPickUp = -680
+    armBotguyDelivery = -320
+    armScore = -370
+    armDelivery = -385
+    armUp = -410
+    armSlightlyUp = -570
+    armBotguyLift = -585
+    armSandwich = -595
+    armBotguy = -625
+    armBotguyPickUp = -650
     armStartbox = -700
