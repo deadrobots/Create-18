@@ -189,6 +189,10 @@ def approachBotguy():
     drive_timed(100, 100, 750)
     moveServo(c.servoClaw, c.clawClosed, 10)
     msleep(500)
+    #Move create forward to let lego drop cubes in middle
+    drive_timed(-40,-40, 1000)
+    msleep(2000)
+    #drive to drop off botguy
     driveTilBlackLCliffAndSquareUp(-100, -100)
     msleep(300)
     driveTilWhiteLFCliff(-100)
@@ -203,7 +207,7 @@ def deliverBotguy():
     driveTilWhiteLCliff(100)
     drive_timed(100, 100, 300)
     moveArm(c.armDelivery, 7)
-    msleep(1000)
+    msleep(500)
     ao()
     DEBUG()
 

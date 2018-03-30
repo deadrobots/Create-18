@@ -58,15 +58,15 @@ if IS_ORANGE_BOT:
     armVeryHigh = -150
     armTram = -285
     armHigh = -290
-    armBotguyDelivery = -330 #was -355
+    armBotguyDelivery = -160 #was -355
     armScore = -400
     armDelivery = -415
     armUp = -440
     armSlightlyUp = -600
     armBotguyLift = -613
     armSandwich = -620
-    armBotguy = -650
-    armBotguyPickUp = -670
+    armBotguy = -590
+    armBotguyPickUp = -615
     armStartbox = -700
 
 
@@ -78,16 +78,7 @@ elif IS_BLUE_BOT:
 
     INCHES_TO_TICKS = 560
 
-    #Arm Servo Values
-    armStartbox = 250
-    armBotguy = 420
-    armLow = 500
-    armOut = 650
-    armSandwich = 665
-    armHorizontal = 750
-    armUp = 1050
-    armHigh = 1350
-    armVeryHigh = 1550
+
 
     #Claw Servo Values
     clawClosed = 230
