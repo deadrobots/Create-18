@@ -37,7 +37,7 @@ if IS_ORANGE_BOT:
     clawClosed = 0
     clawFrisbeeTight = 397
     clawMid = 517
-    clawBotguy = 650 #was 717
+    clawBotguy = 630  #630
     clawGrabBG = 817
     clawTram = 917 #Position to move tram
     clawOpen = 1382
@@ -56,17 +56,17 @@ if IS_ORANGE_BOT:
 
     #current motor arm values
     armVeryHigh = -150
-    armTram = -285
+    armBotguyDelivery = -270 #was -160
     armHigh = -290
-    armBotguyDelivery = -160 #was -355
+    armTram = -260   #-285
     armScore = -400
     armDelivery = -415
     armUp = -440
+    armBotguy = -590
     armSlightlyUp = -600
     armBotguyLift = -613
+    armBotguyPickUp = -640 #-615    #-630
     armSandwich = -620
-    armBotguy = -590
-    armBotguyPickUp = -615
     armStartbox = -700
 
 
