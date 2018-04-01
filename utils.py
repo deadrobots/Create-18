@@ -11,6 +11,50 @@ def wait_for_button(force=False):
         print "Pressed"
         msleep(1000)
 
+def wait_4_light(ignore=False):
+    if ignore:
+        wait_for_button()
+        return
+    while not calibrate(c.STARTLIGHT):
+        pass
+    _wait_4(c.STARTLIGHT)
+
+
+def calibrate(port):
+    print("Press LEFT button with light on")
+    while not left_button():
+        pass
+    while left_button():
+        pass
+    lightOn = analog(port)
+    print("On value =", lightOn)
+    if lightOn > 200:
+        print("Bad calibration")
+        return False
+    msleep(1000)
+    print("Press RIGHT button with light off")
+    while not right_button():
+        pass
+    while right_button():
+        pass
+    lightOff = analog(port)
+    print("Off value =", lightOff)
+    if lightOff < 3000:
+        print("Bad calibration")
+        return False
+
+    if (lightOff - lightOn) < 2000:
+        print("Bad calibration")
+        return False
+    c.startLightThresh = (lightOff - lightOn) / 2
+    print("Good calibration! ", c.startLightThresh)
+    return True
+
+def _wait_4(port):
+    print("waiting for light!! ")
+    while analog(port) > c.startLightThresh:
+        pass
+
 def DEBUG(PrintTime=True):
     create_drive_direct(0, 0)
     ao()

@@ -26,13 +26,16 @@ def init():
         DEBUG() # Do not remove!!!
     selfTest()
     print("Press right button to continue")
-    wait_for_button()
-    print("Pressed.")
+    #wait_for_button()
+    wait_4_light(c.STARTLIGHT)
+    shut_down_in(119.0)
+    print("Running...")
     c.START_TIME = seconds()
 
 def selfTest():
     #tests all motors and servos
     # raise arm
+    print ("Running Self Test")
     testArm()
     resetArm(30, 2000)
     # open/close claw
@@ -58,8 +61,8 @@ def selfTest():
 
 
 def turnToRing():
-    #squares up on Wand S walls then
-    print ('Turn to ring')
+    #squares up on south wall then west wall
+    print ("turnToRing")
     resetArm(30, 2000)
     moveServo(c.servoClaw, c.clawClosed, 35)
     drive_timed(100, 100, 2000) #squares up to west wall
@@ -81,7 +84,9 @@ def turnToRing():
     elif c.IS_BLUE_BOT:
         drive_timed(-30, -50, 775)
 
+
 def liftRing():
+    print("liftRing")
     if c.IS_ORANGE_BOT:
         moveServo(c.servoIgus, c.cogStart - 250, 5)
         moveCog_position(6, 100)
@@ -91,21 +96,23 @@ def liftRing():
         moveCog_position(5.7, 100)
         moveServo(c.servoIgus, c.cogStart - 480, 5)
 
+
 def raiseRing2():
     # orange
     #this allows create to raise ring in the middle of the cog railway and drive
+    print("raiseRing2")
     timedLineFollowLeftFront(1.9)
     moveServo(c.servoIgus, c.cogLift, 5)
     if c.IS_ORANGE_BOT:
         moveCog_position(2.5, 100)
     else:
-        moveCog_position(2, 100)
+        moveCog_position(2.0, 100)
     timedLineFollowLeftFront(1.9)
     moveServo(c.servoIgus, c.evenMoreCogLift, 5)
     if c.IS_ORANGE_BOT:
         moveCog_position(3.8, 100)
     else: #Is blue
-        moveCog_position(5, 70)
+        moveCog_position(5, 100)
     lineFollowLeftFrontTilBlack()
     lineFollowLeftFrontTilWhite()
     moveServo(c.servoIgus, c.cogServoVeryHigh, 5)
@@ -116,9 +123,10 @@ def raiseRing2():
         moveCog_position(1.8, 100)
     timedLineFollowLeftFront(1.8)
 
+
 def dropRing():
+    print("dropRing")
     moveCog_position(-5, 100)
-    # msleep(500)
     moveServo(c.servoIgus, c.cogRingDrop, 5)
     moveCog_position(-1, 100)
     msleep(500)
@@ -131,13 +139,13 @@ def dropRing():
     moveServo(c.servoIgus, c.cogRingDrop, 5)
 
 
-
 def turnToTram():
     # Depends on position after drop, so may need to be changed as drop method changes
     # Tram keeps getting stuck on the claw pegs and the connector - need to work on sliding it without getting stuck
+    print("turnToTram")
     motor(c.cogMotor, -30)
     if c.IS_ORANGE_BOT:
-        drive_timed(100, 100, 950)
+        drive_timed(100, 100, 850)
         rotate_degrees(-165, 100)
     else:
         drive_timed(100, 100, 850)
@@ -145,10 +153,11 @@ def turnToTram():
     moveArm(c.armTram, 10)
     resetChain()
 
+
 def slideTram():
+    print("slideTram")
     rotate_degrees(-75, 100) # this turn is where the arm tries to connect to the tram and starts pushing it
     msleep(500) # do not remove: allows tram to settle
-
     if c.IS_ORANGE_BOT:
         drive_timed(250, 100, 1200)# Used to be 1200 not 900 shorter drive
     else:
@@ -160,7 +169,9 @@ def slideTram():
     else: #is blue
         drive_timed(100, 100, 1370)
 
+
 def approachCenter():
+    print("approachCenter")
     rotate_degrees(92, 100) #Used to be 90
     drive_timed(100,100,1900)
     driveTilBlackLCliffAndSquareUp(-100, -100)
@@ -173,35 +184,38 @@ def approachCenter():
     driveTilWhiteLCliff(-100)
     drive_timed(-100, -100, 1500)
     moveArm(c.armBotguy, 30)
-    moveServo(c.servoClaw, c.clawMid, 20)
+    moveServo(c.servoClaw, c.clawClosed, 20)
     msleep(250)
     driveTilBlackLCliffAndSquareUp(100, 100)
 
+
 def approachBotguy():
+    print("approachBotguy")
     drive_timed(100, 90, 250)
     moveArm(c.armBotguyPickUp, 6)
     moveServo(c.servoClaw, c.clawBotguy, 10) #was clawTram
     msleep(250)
-    drive_timed(100, 100, 700)
-    # moveArm(c.armBotguy, 10)
-    # moveServo(c.servoClaw, c.clawGrabBG, 10)
-    msleep(500)
-    drive_timed(100, 100, 750)
+    drive_timed(100, 100, 1450)
     moveArm(c.armBotguyPickUp, 5)
     moveServo(c.servoClaw, c.clawClosed, 10)
     msleep(500)
     #Move create forward to let lego drop cubes in middle
     drive_timed(40, 40, 1000)
-    msleep(4000)
+    ao() # let the arm rest
+    msleep(30000)
     #drive to drop off botguy
     driveTilBlackLCliffAndSquareUp(-100, -100)
     msleep(300)
     driveTilWhiteLFCliff(-100)
-    drive_timed(-100, -100, 1700)
+    if c.IS_ORANGE_BOT:
+        drive_timed(-100, -100, 1800)
+    else:
+        drive_timed(-100, -100, 1700)
     msleep(500)
 
 
 def deliverBotguy():
+    print("deliverBotguy")
     moveArm(c.armBotguyDelivery, 7)
     msleep(1000)
     driveTilBlackLCliffAndSquareUp(100, 100)
@@ -211,10 +225,6 @@ def deliverBotguy():
     msleep(500)
     ao()
     DEBUG()
-
-    # moveServo(c.servoClaw, c.clawOpen, 7)
-    # drive_timed(-100, -100, 750)
-    # moveArm(c.armStartbox, 6)
 
 
 #add back to routine if there's time
@@ -261,6 +271,4 @@ def getFrisbee():
     moveServo(c.servoClaw, c.clawClosed, 5)
     wait_for_button()
 
-#test functions
-#not used, placed out of the way
 
