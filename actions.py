@@ -195,7 +195,7 @@ def approachBotguy():
     moveArm(c.armBotguyPickUp, 6)
     moveServo(c.servoClaw, c.clawBotguy, 10) #was clawTram
     msleep(250)
-    drive_timed(100, 100, 1450)
+    drive_timed(100, 100, 1550)
     moveArm(c.armBotguyPickUp, 5)
     moveServo(c.servoClaw, c.clawClosed, 10)
     msleep(500)
