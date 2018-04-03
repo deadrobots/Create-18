@@ -144,10 +144,12 @@ def resetArm(power, time):
     motor(c.leftMotor, power)
     motor(c.rightMotor, power)
     msleep(time)
-    ao()
-    msleep(1000)
+    motor(c.leftMotor, 5)
+    motor(c.rightMotor, 5)
+    msleep(250)
     clear_motor_position_counter(c.leftMotor)
     clear_motor_position_counter(c.rightMotor)
+    ao()
 
 
 def testArm():

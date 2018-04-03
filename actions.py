@@ -191,13 +191,14 @@ def approachCenter():
 
 def approachBotguy():
     print("approachBotguy")
-    drive_timed(100, 90, 250)
+    drive_timed(100, 100, 250)  #100, 90
+    moveServo(c.servoClaw, c.clawBotguy, 10)  # was clawTram
     moveArm(c.armBotguyPickUp, 6)
-    moveServo(c.servoClaw, c.clawBotguy, 10) #was clawTram
     msleep(250)
     drive_timed(100, 100, 1550)
-    moveArm(c.armBotguyPickUp, 5)
+    #moveArm(c.armBotguyPickUp, 5)
     moveServo(c.servoClaw, c.clawClosed, 10)
+    print("Grabbed botguy")
     msleep(500)
     #Move create forward to let lego drop cubes in middle
     drive_timed(40, 40, 1000)
