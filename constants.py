@@ -60,17 +60,15 @@ if IS_ORANGE_BOT:
 
     #current motor arm values
     armVeryHigh = -150
-    armBotguyDelivery = -270 #was -160
+    armBotguyDelivery = -290
     armHigh = -290
-    armTram = -260   #-285
-    armScore = -400
+    armTram = -300
     armDelivery = -415
     armUp = -440
     armBotguy = -590
     armSlightlyUp = -600
-    armBotguyLift = -613
     armSandwich = -620
-    armBotguyPickUp = -645 #-615    #-630
+    armBotguyPickUp = -630
     armStartbox = -700
 
 
@@ -104,11 +102,9 @@ elif IS_BLUE_BOT:
     armBotguyDelivery = -260
     armTram = -305   #-295
     armHigh = -290
-    armScore = -370
     armDelivery = -385
     armUp = -410
     armSlightlyUp = -570
-    armBotguyLift = -585
     armSandwich = -595
     armBotguy = -640    #-615
     armBotguyPickUp = -675 #-665
