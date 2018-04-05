@@ -60,15 +60,15 @@ if IS_ORANGE_BOT:
 
     #current motor arm values
     armVeryHigh = -150
-    armBotguyDelivery = -290
     armHigh = -290
+    armBotguyDelivery = -310   #-300
     armTram = -300
     armDelivery = -415
     armUp = -440
-    armBotguy = -590
+    armBotguy = -590    
     armSlightlyUp = -600
     armSandwich = -620
-    armBotguyPickUp = -630
+    armBotguyPickUp = -630   
     armStartbox = -700
 
 

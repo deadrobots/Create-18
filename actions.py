@@ -191,11 +191,11 @@ def approachCenter():
 
 def approachBotguy():
     print("approachBotguy")
-    drive_timed(100, 105, 250)  #100, 90
+    drive_timed(100, 110, 250)  #100, 105
     moveServo(c.servoClaw, c.clawBotguy, 10)  # was clawTram
     moveArm(c.armBotguyPickUp, 6)
     msleep(250)
-    drive_timed(100, 105, 1550) #100, 100
+    drive_timed(100, 110, 1550) #100, 105
     #moveArm(c.armBotguyPickUp, 5)
     moveServo(c.servoClaw, c.clawClosed, 10)
     print("Grabbed botguy")
