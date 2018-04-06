@@ -192,8 +192,9 @@ def approachCenter():
 def approachBotguy():
     print("approachBotguy")
     drive_timed(100, 110, 250)  #100, 105
-    moveServo(c.servoClaw, c.clawBotguy, 10)  # was clawTram
+    resetArmLowPosition()
     moveArm(c.armBotguyPickUp, 6)
+    moveServo(c.servoClaw, c.clawBotguy, 10)  # was clawTram
     msleep(250)
     drive_timed(100, 110, 1550) #100, 105
     #moveArm(c.armBotguyPickUp, 5)
@@ -222,54 +223,7 @@ def deliverBotguy():
     driveTilBlackLCliffAndSquareUp(100, 100)
     driveTilWhiteLCliff(100)
     drive_timed(100, 100, 350)
-    moveArm(c.armDelivery, 7)
+    moveArm(c.armScore, 7)
     msleep(500)
     ao()
     DEBUG()
-
-
-#add back to routine if there's time
-def approachSandwich():
-    if c.IS_ORANGE_BOT:#Has worked consistently (Twice)
-        timedLineFollowRight(7) # Used to be 6.35
-        drive_timed(90, -90, 1950)
-    else:
-        timedLineFollowRight(7.5)
-        drive_timed(90, -90, 2200)
-
-    resetArm(40, 500)
-    drive_timed(135, 150, 1500) # Trouble here
-    drive_timed(40, 40, 2500) #50,50,2300
-    msleep(1000)
-    drive_timed(-150, -150, 1500)
-
-def getFrisbee():
-    # Goal is to grab date tree frisbees and make a date sandwich
-    # Then back up and deposit your fresh date sandwich into the tram bin
-    driveTilBlackLFCliff(-100)
-    driveTilWhiteLFCliff(-100)
-    moveServo(c.servoClaw, c.clawOpen, 15)
-    moveArm(c.armSandwich, 15)
-    msleep(700)
-    driveTilBlackLFCliff(100)
-    driveTilWhiteLFCliff(100)
-    drive_timed(100,100, 170) # Used to be 150
-    moveServo(c.servoClaw, c.clawMid, 15)
-    msleep(1000)
-    moveArm(c.armSlightlyUp, 10)
-    moveServo(c.servoClaw, c.clawFrisbeeTight,2)
-    moveArm(c.armDelivery, 7)
-    driveTilBlackLCliffAndSquareUp(-100, -100)
-    rotate_degrees(53, 50)
-    # This drive isn't straight on
-    if c.IS_BLUE_BOT:
-        drive_timed(100, 100, 2700)
-    else: #IS_ORANGE_BOT
-        drive_timed(100, 100, 3050)
-    msleep(500)
-    moveServo(c.servoClaw, c.clawOpen, 5)
-    drive_timed(-50, -50, 2000)
-    moveServo(c.servoClaw, c.clawClosed, 5)
-    wait_for_button()
-
-

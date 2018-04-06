@@ -151,6 +151,12 @@ def resetArm(power, time):
     clear_motor_position_counter(c.rightMotor)
     ao()
 
+def resetArmLowPosition():
+    ao()
+    msleep(500)
+    clear_motor_position_counter(c.leftMotor)
+    clear_motor_position_counter(c.rightMotor)
+
 
 def testArm():
     print("Left motor up")
