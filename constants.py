@@ -100,7 +100,7 @@ elif IS_BLUE_BOT:
     #current motor arm values
     armVeryHigh = -150
     #armBotguyDelivery = -260
-    armTram = -305   #-295
+    armTram = -315   #-305
     armHigh = -290
     #armDelivery = -385
     armUp = -410

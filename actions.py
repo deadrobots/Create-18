@@ -145,10 +145,10 @@ def turnToTram():
     print("turnToTram")
     motor(c.cogMotor, -30)
     if c.IS_ORANGE_BOT:
-        drive_timed(100, 100, 850)
+        drive_timed(100, 100, 800)  #-850
         rotate_degrees(-165, 100)
     else:
-        drive_timed(100, 100, 850)
+        drive_timed(100, 100, 765)   #780
         rotate_degrees(-160, 100)
     moveArm(c.armTram, 10)
     resetChain()
@@ -167,7 +167,7 @@ def slideTram():
     if c.IS_ORANGE_BOT:
         drive_timed(100, 100, 1370) #100, 100, 1100
     else: #is blue
-        drive_timed(100, 100, 1370)
+        drive_timed(100, 100, 1380)   #1370
 
 
 def approachCenter():
@@ -193,14 +193,14 @@ def approachBotguy():
     print("approachBotguy")
     drive_timed(100, 110, 250)  #100, 105
     resetArmLowPosition()
-    moveArm(c.armBotguyPickUp, 6)
-    moveServo(c.servoClaw, c.clawBotguy, 10)  # was clawTram
-    msleep(250)
+    moveArm(c.armBotguyPickUp, 8)
+    moveServo(c.servoClaw, c.clawBotguy, 12)  # was clawTram
+    msleep(150)
     drive_timed(100, 110, 1550) #100, 105
     #moveArm(c.armBotguyPickUp, 5)
-    moveServo(c.servoClaw, c.clawClosed, 10)
+    moveServo(c.servoClaw, c.clawClosed, 12)
     print("Grabbed botguy")
-    msleep(500)
+    msleep(150)
     #Move create forward to let lego drop cubes in middle
     drive_timed(40, 40, 1000)
     ao() # let the arm rest
